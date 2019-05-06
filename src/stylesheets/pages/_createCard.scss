@@ -1,0 +1,68 @@
+.page-card {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__main-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-image: linear-gradient(to bottom, $color-back, $color-white);
+  .wrapper {
+    flex-grow: 1;
+    height: 100%;
+    @include mq($bp_tablet) {
+      display: grid;
+      grid-gap: rem(30);
+      grid-template-columns: rem(330) 1fr;
+      grid-template-rows: 100%;
+      padding: 0 rem(40);
+    }
+  }
+}
+
+.section__collapse {
+  display: none;
+}
+
+.main__settings {
+  padding: rem(30) rem(20);
+  @include mq($bp_tablet) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    padding: rem(30) 0;
+  }
+}
+
+.fieldset__legend {
+  height: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.form__fieldset {
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+@keyframes spin {
+  from {transform:rotate(0deg);
+  } to {
+    transform: rotate(180deg);
+  }
+}
+.fieldset__active {
+  .arrow {
+    animation: spin ease .5s;
+    transform: rotate(180deg);
+  }
+  .section__collapse {
+    display: block;
+  }
+  .section__collapse.design__colors {
+    display: flex;
+  }
+}

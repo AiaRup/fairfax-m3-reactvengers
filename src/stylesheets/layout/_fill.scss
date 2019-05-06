@@ -1,0 +1,115 @@
+.fill__container.form__fieldset {
+  padding-top: rem(10);
+  border-bottom: rem(1) solid $color-border;
+}
+
+.fill__container-title {
+  @include titleContainer;
+}
+
+.title__fill-container {
+  @include titleFlex;
+  .fill__icon {
+    padding-right: 0.625rem;
+    font-size: rem(18);
+    color: $color-orange;
+  }
+  .title__fill {
+    @include titleStyle;
+  }
+}
+
+.button__fill {
+  width: rem(16);
+  height: rem(18);
+  font-size: rem(18);
+  color: $color-darkGrey;
+  background-color: transparent;
+  border: none;
+}
+
+.fill__container-form {
+  font-size: rem(14);
+  padding: rem(15) 0 rem(30);
+}
+
+.fill__field-container {
+  margin-right: 0;
+  padding-bottom: rem(20);
+  &:last-child {
+    padding-bottom: 0;
+  }
+  .fill__label {
+    @include label;
+  }
+  .fill__field {
+    @include input;
+  }
+}
+
+.add__img-container {
+  display: flex;
+  position: relative;
+  .add__img-input {
+    visibility: hidden;
+    width: rem(140);
+    height: rem(30);
+  }
+
+  .fill__button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: rem(30);
+    background-color: $color-orange;
+    color: $color-white;
+    text-transform: capitalize;
+    border: none;
+    border-radius: rem(3);
+    padding: rem(4) rem(22) rem(6);
+    box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.32);
+    cursor: pointer;
+    &:hover {
+      transition: 0.4s ease-in-out;
+      background-color: $color-dOrange;
+    }
+  }
+
+  .fill__preview-little {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: rem(30);
+    height: rem(30);
+    margin-left: rem(20);
+    border: 1px solid $color-green;
+  }
+}
+
+.img__user {
+  width: 0;
+  height: 0;
+}
+
+.error {
+  .fill__label {
+    color: red;
+  }
+  .fill__field {
+    border: 1px solid red;
+  }
+}
+
+.errorMsg {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.requiered {
+  color: $color-gBlue;
+  margin-bottom: rem(6);
+  line-height: 1.43;
+  text-transform: initial;
+  font-size: rem(12);
+}

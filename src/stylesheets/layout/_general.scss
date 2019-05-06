@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: rem($defaultFontSize);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $openSans;
+  color: $color-black;
+  min-height: 100vh;
+}
+
+.wrapper {
+  padding: 0 rem(30);
+  @include mq($bp-tablet) {
+    padding: 0 rem(40);
+  }
+}

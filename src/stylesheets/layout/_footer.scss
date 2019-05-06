@@ -1,0 +1,40 @@
+.page__footer {
+  border-top: rem(1) solid $color-border;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: rem(20) 0;
+
+  .wrapper {
+    @include mq($bp-tablet) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+}
+.footer__copyright {
+  margin: 0;
+}
+.footer__copyright-name,
+.footer__wildcards {
+  font-size: rem(14);
+  color: $color-grey;
+  font-family: $openSans;
+  opacity: 0.5;
+  margin-bottom: rem(11);
+  @include mq($bp-tablet) {
+    margin-top: rem(11);
+    text-align: left;
+  }
+}
+.footer__logo-adalab {
+  width: rem(103);
+}
+.page-card .page__footer .footer__logo-adalab {
+  height: rem(40);
+}

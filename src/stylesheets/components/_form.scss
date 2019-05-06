@@ -1,0 +1,18 @@
+@mixin input {
+  margin: 0;
+  width: 100%;
+  height: rem(30);
+  padding-left: rem(10);
+  display: block;
+  border: rem(1) solid $color-green;
+  color: $color-black;
+}
+
+@mixin label {
+  display: block;
+  color: $color-gBlue;
+  margin-bottom: rem(6);
+  line-height: 1.43;
+  text-transform: capitalize;
+  font-size: rem(14);
+}

@@ -1,0 +1,123 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-back;
+}
+
+.main__landing-header {
+  background-color: $color-back;
+}
+
+.main__landing-page {
+  padding-bottom: rem(30);
+  background-color: $color-back;
+  text-align: center;
+  @include mq($bp_tablet) {
+    padding-bottom: 0;
+  }
+}
+
+.main__landing-title {
+  color: $color-orange;
+  font-family: $merri;
+  font-size: rem(19);
+  padding: rem(35) 0 rem(1);
+  font-weight: 900;
+  @include mq($bp_tablet) {
+    font-size: rem(24);
+    padding-top: rem(31);
+  }
+}
+
+.main__landing-text {
+  color: $color-gBlue;
+  font-family: $openSans;
+  font-size: rem(13);
+  max-width: rem(265);
+  padding-bottom: rem(16);
+  margin: 0 auto;
+  @include mq($bp_tablet) {
+    font-size: rem(16);
+    padding-bottom: rem(25);
+    max-width: rem(331);
+  }
+}
+
+.main__landing-menu {
+  max-width: rem(268);
+  border: solid rem(2) rgba(225, 115, 52, 0.21);
+  border-radius: rem(4);
+  margin: 0 auto;
+  @include mq($bp_tablet) {
+    max-width: rem(325);
+  }
+}
+
+.main__landing-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, rem(60));
+  grid-gap: rem(24);
+  padding: rem(15) rem(20) rem(10);
+  @include mq($bp_tablet) {
+    grid-gap: rem(30);
+    grid-template-columns: repeat(3, rem(75));
+  }
+}
+
+.main__landing-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-family: $openSans;
+  font-size: rem(13);
+  color: $color-darkGrey;
+  padding-bottom: rem(6);
+  @include mq($bp_tablet) {
+    font-size: rem(16);
+    padding-bottom: rem(10);
+  }
+}
+
+.main__landing-list i {
+  color: $color-orange;
+  font-size: rem(22);
+  @include mq($bp_tablet) {
+    font-size: rem(28);
+  }
+}
+
+.main__landing-start {
+  width: rem(130);
+  background-color: $color-dBlue;
+  font-family: $openSans;
+  font-size: rem(16);
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: rem(21);
+  padding: rem(10) rem(20);
+  margin: rem(38) auto 0;
+  @include mq($bp_tablet) {
+    margin-top: rem(100);
+  }
+  &:hover{
+    background-color: $color-orange;
+    transition: 0.40s ease-in-out;
+    }
+}
+
+.main__landing-link {
+  color: $color-white;
+  text-decoration: none;
+}
+

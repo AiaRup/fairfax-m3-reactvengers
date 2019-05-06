@@ -1,0 +1,32 @@
+@mixin mq($bp, $direction: min-width) {
+  @media all and ($direction: rem($bp)) {
+    @content;
+  }
+}
+
+@mixin titleStyle {
+  font-family: $openSans;
+  font-size: rem(18);
+  color: $color-darkGrey;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+@mixin titleFlex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin titleContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: rem(10);
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+}

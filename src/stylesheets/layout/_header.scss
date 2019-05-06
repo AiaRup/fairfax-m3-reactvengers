@@ -1,0 +1,44 @@
+.page__header {
+  background: $color-back;
+}
+.header__logo {
+  background: $color-back;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__logo-img {
+  background: url('../images/awesome-logo.svg') center center
+    no-repeat;
+  background-size: contain;
+  height: 0;
+  overflow: hidden;
+  padding-top: rem(95);
+  width: rem(250);
+  @include mq($bp-tablet) {
+    width: rem(420);
+  }
+}
+
+.page-card .page__header {
+  background: $color-white;
+}
+
+.page-card .page__header .header__logo {
+  background: $color-white;
+  height: rem(111);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+  @include mq($bp_tablet) {
+    justify-content: flex-start;
+  }
+}
+
+.page-card .page__header .header__logo-img {
+  width: rem(201);
+  height: rem(50);
+  margin-top: 0;
+}

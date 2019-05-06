@@ -1,0 +1,80 @@
+.design__main.form__fieldset {
+  border-bottom: rem(1) solid $color-border;
+}
+
+.design__title-wrapper {
+  @include titleContainer;
+}
+
+.design__title {
+  @include titleFlex;
+}
+
+.design-icon {
+  padding-right: rem(10);
+  color: $color-orange;
+}
+
+.design__title-text {
+  @include titleStyle;
+}
+
+.design__button {
+  width: rem(16);
+  height: rem(18);
+  font-size: rem(18);
+  color: $color-darkGrey;
+  background-color: transparent;
+  border: none;
+}
+
+.design__colors {
+  display: flex;
+  justify-content: space-between;
+  padding: rem(15) 0 rem(30);
+}
+
+.design__colors-title {
+  font-family: $openSans;
+  font-size: rem(14);
+  color: $color-darkGrey;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  padding-left: rem(20);
+}
+
+.design__colors-list {
+  list-style: none;
+}
+
+.palettecolors {
+  border: rem(0);
+}
+
+.palettecolor-list {
+  display: flex;
+  list-style: none;
+  .rectangle:first-child {
+    margin-left: rem(10);
+  }
+}
+
+.rectangle {
+  width: rem(30);
+  height: 0;
+  padding-top: rem(25);
+  overflow: hidden;
+}
+
+.design__label {
+  display: flex;
+  align-items: center;
+  margin-bottom: rem(20);
+  &[for='selection3'] {
+    margin-bottom: 0;
+  }
+}

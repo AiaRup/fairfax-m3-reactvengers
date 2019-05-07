@@ -1,13 +1,12 @@
+/* Destructuring del objeto React, que tiene diferentes elementos, como COmponent */
 import React, {Component} from 'react';
+import Home from './components/Home/Home';
 import adalabLogo from './images/adalab-logo.png';
 import './stylesheets/App.scss';
 
 class App extends Component {
   render() {
     return (
-      <div className="page">
-        <div className="page__container">
-          <div className="page__subcontainer">
             <header className="page__header">
               <div className="wrapper">
                 <div className="header__logo"> <a href="index.html" className="header__link"><h1 className="header__logo-img">Awesome profile cards</h1></a></div>

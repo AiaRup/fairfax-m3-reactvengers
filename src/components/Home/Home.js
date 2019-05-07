@@ -5,17 +5,18 @@ import Main from './Main';
 import Footer from './Footer';
 
 const Home = props => {
-    return (
+  const { btnText, iconsArr, description, title, teamName } = props;
+  return (
     <div className="page">
-        <div className="page__container">
-            <div className="page__subcontainer">
-                <Header />
-                <Main />
-            </div>
+      <div className="page__container">
+        <div className="page__subcontainer">
+          <Header />
+          <Main btnText={btnText} iconsArr={iconsArr} description={description} title={title} />
         </div>
-        <Footer />
+      </div>
+      <Footer teamName={teamName} />
     </div>
-    )
-}
+  );
+};
 
 export default Home;

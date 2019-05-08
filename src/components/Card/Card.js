@@ -8,7 +8,7 @@ import Footer from '../Home/Footer';
 const Card = props => {
   // const { btnText, iconsArr, description, title, teamName } = props;
   return (
-    <div class="page-card">
+    <div className="page-card">
       <Header />
       <Main/>
       <Footer />

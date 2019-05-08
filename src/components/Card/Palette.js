@@ -1,14 +1,20 @@
 import React from 'react';
 
-const Palette = ({inputValue, theme, colors}) => {
+const Palette = props => {
+  const {inputValue, theme, colors, isChecked}=props.paletteInfo;
   return(
-    <li class="colors-list-element">
-      <label for={`selection${theme}`} class="design__label">
+    <li className="colors-list-element">
+      <label htmlFor={`selection${theme}`} className="design__label">
         <input id={`selection${theme}`} type="radio" value={inputValue} name="palettecolors"
-        class={`palettecolors theme${theme}`} data-theme={theme} checked />
-        <ul class="palettecolor-list">
-          {colors.map((color, index) => 
-            <li class="rectangle" style={`background-color:${color.hex}`}>{color.name}</li>
+        className={`palettecolors theme${theme}`} data-theme={theme} checked={isChecked} />
+        <ul className="palettecolor-list">
+          {colors.map((color, index) =>
+          {
+            const ITEMSTYLE = {
+              backgroundColor: color.hex,
+            }
+            return <li className="rectangle" key={index} style={ITEMSTYLE}>{color.name}</li>
+          } 
           )}
         </ul>
       </label>

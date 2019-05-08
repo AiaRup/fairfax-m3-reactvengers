@@ -12,7 +12,7 @@ const Footer = props => {
         </div>
         <div className="footer__logo">
           {' '}
-          <a href="https://adalab.es/" target="_blank">
+          <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer">
             <img className="footer__logo-adalab" src={adalabLogo} alt="adalab logo" />
           </a>
         </div>

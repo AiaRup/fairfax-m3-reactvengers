@@ -17,14 +17,14 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
   )
 }
 
-TitleCollapsible.propTypes = {
-  labelFor: PropTypes.string,
-  labelContent: PropTypes.string,
-  inputId: PropTypes.string,
-  inputType: PropTypes.string,
-  inputName: PropTypes.string,
-  inputPlaceholder: PropTypes.string,
-  dataInfo: PropTypes.string
+InputFill.propTypes = {
+  labelFor: PropTypes.string.isRequired,
+  labelContent: PropTypes.string.isRequired,
+  inputId: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputPlaceholder: PropTypes.string.isRequired,
+  dataInfo: PropTypes.string.isRequired
 }
 
 export default InputFill;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Collapsible from './Collapsible';
 import Palette from './Palette';
-import Fill from '/Fill';
+import Fill from './Fill';
 
 const ARRAYPALETTE = [
   {

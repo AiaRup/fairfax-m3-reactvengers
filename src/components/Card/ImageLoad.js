@@ -21,5 +21,6 @@ const ImageLoad = () => {
     </div>
     </div>
       )
+  }
 
   export default ImageLoad;

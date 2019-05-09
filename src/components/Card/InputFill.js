@@ -14,7 +14,6 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
       />
     </div>
   )
-
 }
 
 export default InputFill;

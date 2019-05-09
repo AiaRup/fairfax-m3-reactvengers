@@ -1,6 +1,7 @@
 import React from 'react';
 import Collapsible from './Collapsible';
 import Palette from './Palette';
+import Share from './Share';
 
 const ARRAYPALETTE = [
   {
@@ -103,8 +104,10 @@ const Form = () => {
           </ul>
         </div>
       </Collapsible>
-      <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena" />
-      <Collapsible titleInfo={ARRAYTITLE[2]} fieldsetClass="share__main" legendText="comparte" />
+      <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena"/>
+      <Collapsible titleInfo={ARRAYTITLE[2]} fieldsetClass="share__main" legendText="comparte">
+        <Share/>
+      </Collapsible>
     </form>
   );
 };

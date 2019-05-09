@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Palette = props => {
   const {inputValue, theme, colors, isChecked}=props.paletteInfo;
@@ -20,6 +21,13 @@ const Palette = props => {
       </label>
     </li>
   )
+}
+
+Palette.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  theme: PropTypes.number.isRequired,
+  colors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isChecked: PropTypes.bool.isRequired
 }
 
 export default Palette;

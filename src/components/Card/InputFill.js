@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo}) => {
   return (
@@ -14,6 +15,16 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
       />
     </div>
   )
+}
+
+TitleCollapsible.propTypes = {
+  labelFor: PropTypes.string,
+  labelContent: PropTypes.string,
+  inputId: PropTypes.string,
+  inputType: PropTypes.string,
+  inputName: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
+  dataInfo: PropTypes.string
 }
 
 export default InputFill;

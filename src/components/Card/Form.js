@@ -1,6 +1,7 @@
 import React from 'react';
 import Collapsible from './Collapsible';
 import Palette from './Palette';
+import Fill from '/Fill';
 
 const ARRAYPALETTE = [
   {
@@ -93,13 +94,15 @@ const Form = () => {
         <div className="design__colors section__collapse">
           <p className="design__colors-title">colores</p>
           <ul className="design__colors-list">
-            {ARRAYPALETTE.map((palette, index) => 
+            {ARRAYPALETTE.map((palette, index) =>
               <Palette paletteInfo={palette} key={index}/>
             )}
           </ul>
         </div>
       </Collapsible>
-      <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena"/>
+      <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena">
+        <Fill />
+      </Collapsible>
       <Collapsible titleInfo={ARRAYTITLE[2]} fieldsetClass="share__main" legendText="comparte"/>
     </form>
   )

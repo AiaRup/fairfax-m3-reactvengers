@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TitleCollapsible from './TitleCollapsible';
 
 const Collapsible = ({fieldsetClass, titleInfo, children, legendText}) => {
@@ -10,5 +11,12 @@ const Collapsible = ({fieldsetClass, titleInfo, children, legendText}) => {
     </fieldset>
   )
 }
+
+Collapsible.propTypes = {
+  fieldsetClass: PropTypes.string.isRequired,
+  titleInfo: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
+  legendText: PropTypes.string.isRequired
+};
 
 export default Collapsible;

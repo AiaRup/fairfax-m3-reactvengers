@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Main = props => {
   // Destructuring the props, to don't reuse props.title, props.btnText...
@@ -35,6 +36,20 @@ const Main = props => {
       </div>
     </main>
   );
+};
+
+Home.defaultProps = {
+  title: 'Crea tu tarjeta de visita',
+  description: 'Crea mejores contactos profesionales de forma fácil y cómoda',
+  iconsArr: ['Diseña', 'Rellena', 'Comparte'],
+  btnText: 'comenzar',
+};
+
+Home.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  iconsArr: PropTypes.arrayOf(PropTypes.string),
+  btnText: PropTypes.string
 };
 
 export default Main;

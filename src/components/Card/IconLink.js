@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const IconLink = ({ liClass, linkClass, iconClass }) => {
     return (
@@ -8,6 +9,12 @@ const IconLink = ({ liClass, linkClass, iconClass }) => {
             </a>
         </li>
     )
+}
+
+IconLink.propTypes = {
+    liClass: PropTypes.string.isRequired,
+    linkClass: PropTypes.string.isRequired,
+    iconClass: PropTypes.string.isRequired
 }
 
 export default IconLink;

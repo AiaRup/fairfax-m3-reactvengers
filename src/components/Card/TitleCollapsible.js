@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TitleCollapsible = ({ titleInfo: { wrapperClass, containerClass, iconClass, titleClass, title, arrowClass } }) => {
   return (
@@ -12,6 +13,10 @@ const TitleCollapsible = ({ titleInfo: { wrapperClass, containerClass, iconClass
       </div>
     </div>
   );
+};
+
+TitleCollapsible.propTypes = {
+  titleInfo: PropTypes.object.isRequired
 };
 
 export default TitleCollapsible;

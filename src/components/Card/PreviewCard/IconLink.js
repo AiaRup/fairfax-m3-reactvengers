@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const IconLink = ({ liClass, linkClass, iconClass, iconsData }) => {
+const IconLink = ({ liClass, linkClass, iconClass, iconsData, hrefDefault }) => {
     return (
         <li className={`card__link-sm ${liClass} hidden`}>
-            <a className={`${linkClass} social__link`} href={iconsData}>
+            <a className={`${linkClass} social__link`} href={`${hrefDefault}${iconsData}`}>
                 <i className={iconClass}></i>
             </a>
         </li>

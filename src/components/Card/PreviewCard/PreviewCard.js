@@ -5,22 +5,26 @@ const ARRICON = [
     {
         liClass: 'sm__email',
         linkClass: 'email__link',
-        iconClass: 'far fa-envelope'
+        iconClass: 'far fa-envelope',
+        hrefDefault: 'mailto:'
     },
     {
         liClass: 'sm__phone',
         linkClass: 'mobile__link',
-        iconClass: 'fas fa-mobile-alt'
+        iconClass: 'fas fa-mobile-alt',
+        hrefDefault: 'tel:'
         },
     {
         liClass: 'sm__linkedin',
         linkClass: 'linkedin__link',
-        iconClass: 'fab fa-linkedin-in'
+        iconClass: 'fab fa-linkedin-in',
+        hrefDefault: 'https://www.linkedin.com/in/'
         },
     {
         liClass: 'sm__github',
         linkClass: 'github__link',
-        iconClass: 'fab fa-github-alt'
+        iconClass: 'fab fa-github-alt',
+        hrefDefault: 'https://github.com/'
         }
 ];
 
@@ -42,7 +46,7 @@ const PreviewCard = props => {
                 </div>
                 <ul className="card__links-list">
                     {ARRICON.map((icon, index) =>
-                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]}/>
+                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]} hrefDefault={icon.hrefDefault}/>
                     )}
 
                 </ul>

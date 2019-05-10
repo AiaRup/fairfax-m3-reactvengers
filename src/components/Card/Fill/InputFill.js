@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo}) => {
+const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo, updateUser}) => {
+
+    const getValue = (event) => {
+      const value = event.currentTarget.value;
+      updateUser(value, inputId);
+    }
+
+
+
   return (
     <div className="fill__field-container">
       <label htmlFor={labelFor} className="fill__label">{labelContent}</label>
@@ -12,6 +20,7 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
         name={inputName}
         placeholder={inputPlaceholder}
         data-info={dataInfo}
+        onChange={getValue}
       />
     </div>
   )

@@ -4,13 +4,12 @@ import Header from '../Home/Header';
 import Main from '../Card/Main';
 import Footer from '../Home/Footer';
 
-
 const Card = props => {
-  // const { btnText, iconsArr, description, title, teamName } = props;
+  const { user, updateUser, iconsStateArr } = props;
   return (
     <div className="page-card">
       <Header />
-      <Main/>
+      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr}/>
       <Footer />
     </div>
   );

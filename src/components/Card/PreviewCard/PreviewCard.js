@@ -25,6 +25,8 @@ const ARRICON = [
 ];
 
 const PreviewCard = props => {
+  const {user: {name, job, email, phone, linkedin, github, photo, palette}} = props;
+  const iconsData = [ email, phone, linkedin, github ]
     return (
         <section className="main__preview">
             <div className="preview__card theme1">
@@ -33,16 +35,16 @@ const PreviewCard = props => {
                     reset
                 </button>
                 <div className="card__header ">
-                    <h2 className="card__name ">nombre apellido</h2>
-                    <p className="card__job">Front-end developer</p>
+                    <h2 className="card__name ">{name}</h2>
+                    <p className="card__job">{job}</p>
                 </div>
                 <div className="card__image js__profile-image"><img className="img__user" src="" alt="" />
                 </div>
                 <ul className="card__links-list">
                     {ARRICON.map((icon, index) =>
-                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index}/>
+                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]}/>
                     )}
-                    
+
                 </ul>
             </div>
         </section>

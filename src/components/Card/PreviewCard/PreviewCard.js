@@ -29,7 +29,8 @@ const ARRICON = [
 ];
 
 const PreviewCard = props => {
-  const {user: {name, job, email, phone, linkedin, github, photo, palette}} = props;
+  const {user: {name, job, email, phone, linkedin, github, photo, palette}, iconsStateArr} = props;
+  console.log('iconsStateArr', iconsStateArr);
   const iconsData = [ email, phone, linkedin, github ]
     return (
         <section className="main__preview">
@@ -46,7 +47,7 @@ const PreviewCard = props => {
                 </div>
                 <ul className="card__links-list">
                     {ARRICON.map((icon, index) =>
-                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]} hrefDefault={icon.hrefDefault}/>
+                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]} hrefDefault={icon.hrefDefault} isVisible={iconsStateArr[index].isVisible}/>
                     )}
 
                 </ul>
@@ -57,3 +58,5 @@ const PreviewCard = props => {
 }
 
 export default PreviewCard;
+
+// isVisible={iconsStateArr[index].isVisible}

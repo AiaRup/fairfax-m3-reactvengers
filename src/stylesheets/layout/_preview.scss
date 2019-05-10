@@ -99,6 +99,9 @@
 
 .social__link {
   text-decoration: none;
+  width: rem(32);
+  height: rem(32);
+  border-radius: rem(16);
 }
 
 .theme1 {
@@ -111,13 +114,14 @@
   .card__job {
     color: $color-dBlue;
   }
-  .card__link-sm {
-    color: $color-gBlue;
-    border: rem(2) solid $color-green;
-  }
   .social__link {
     color: $color-gBlue;
+    border: rem(2) solid $color-green;
+    // color: $color-gBlue;
   }
+  // .social__link {
+  //   color: $color-gBlue;
+  // }
 }
 
 .theme2 {
@@ -130,13 +134,13 @@
   .card__job {
     color: $color-red;
   }
-  .card__link-sm {
+  .social__link {
     color: $color-dRed;
     border: rem(2) solid $color-dOrange;
   }
-  .social__link {
-    color: $color-dRed;
-  }
+  // .social__link {
+  //   color: $color-dRed;
+  // }
 }
 
 .theme3 {
@@ -149,11 +153,13 @@
   .card__job {
     color: $color-blueGrey;
   }
-  .card__link-sm {
+  .social__link {
     color: $color-dGrey;
     border: rem(2) solid $color-blueGrey;
   }
-  .social__link {
-    color: $color-dGrey;
-  }
+  // .social__link {
+  //   color: $color-dGrey;
+  // }
 }
+
+

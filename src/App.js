@@ -35,23 +35,61 @@ class App extends Component {
         github: '',
         photo: '',
         palette: 1
-      }
+      },
+      iconsStateArr: [
+        { id: 'email', isVisible: false },
+        { id: 'phone', isVisible: false },
+        { id: 'linkedin', isVisible: false },
+        { id: 'github', isVisible: false }
+      ]
     };
     this.updateUser = this.updateUser.bind(this);
+    this.changeIconState = this.changeIconState.bind(this);
   }
 
   updateUser(value, id) {
     this.setState((prevState, props) => {
       const newUser = { ...prevState.userProfile };
       newUser[id] = value;
+      // change state of icon visibility
+      // this.changeIconState(value, id);
       return { userProfile: newUser };
-    });
+    }, () => { this.changeIconState(value, id); });
   }
 
+  changeIconState(value, id) {
+    // find the icon with the id provided
+    const iconState = this.state.iconsStateArr.find((icon) => icon.id === id);
+    const index = this.state.iconsStateArr.findIndex((icon) => icon.id === id);
+    // change the property isVisible of this icon object
+    iconState.isVisible = value ? true : false;
+    console.log('iconState', iconState.isVisible);
+    // create new array and add the new icon object
+    this.setState((prevState, props) => {
+      const newArr = [...this.state.iconsStateArr];
+      newArr.splice(index, 1, iconState);
+      console.log('newArr', newArr)
+      return { iconsStateArr: newArr };
+    });
+    // update icons state
+
+
+
+
+    // if (value) {
+    //   iconState.isVisible = true;
+    // } else {
+    //   iconState.isVisible = false;
+    // }
+  }
+
+
+
   render() {
+    const { userProfile, iconsStateArr } = this.state;
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={this.state.userProfile} updateUser={this.updateUser} />
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr}/>
     );
   }
 }

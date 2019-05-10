@@ -16,7 +16,7 @@ const TitleCollapsible = ({ titleInfo: { wrapperClass, containerClass, iconClass
 };
 
 TitleCollapsible.propTypes = {
-  titleInfo: PropTypes.string.isRequired,
-}
+  titleInfo: PropTypes.object.isRequired
+};
 
 export default TitleCollapsible;

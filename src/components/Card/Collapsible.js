@@ -14,10 +14,8 @@ const Collapsible = ({ fieldsetClass, titleInfo, children, legendText }) => {
 };
 
 Collapsible.propTypes = {
-  fieldsetClass: PropTypes.string.isRequired,
-  titleInfo: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
-  legendText: PropTypes.string.isRequired
+  titleInfo: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired
 };
 
 export default Collapsible;

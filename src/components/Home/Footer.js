@@ -23,7 +23,7 @@ const Footer = props => {
 };
 
 Footer.propTypes = {
-  teamName: PropTypes.string.isRequired
+  teamName: PropTypes.string
 };
 
 export default Footer;

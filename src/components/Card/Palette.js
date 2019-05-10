@@ -6,14 +6,11 @@ const Palette = props => {
   return (
     <li className="colors-list-element">
       <label htmlFor={`selection${theme}`} className="design__label">
-        <input id={`selection${theme}`} type="radio" value={inputValue} name="palettecolors" className={`palettecolors theme${theme}`} data-theme={theme} checked={isChecked} />
+        <input id={`selection${theme}`} type="radio" value={inputValue} name="palettecolors" className={`palettecolors theme${theme}`} data-theme={theme} defaultChecked={isChecked} />
         <ul className="palettecolor-list">
           {colors.map((color, index) => {
-            const ITEMSTYLE = {
-              backgroundColor: color.hex
-            };
             return (
-              <li className="rectangle" key={index} style={ITEMSTYLE}>
+              <li className="rectangle" key={index} style={{backgroundColor: color.hex}}>
                 {color.name}
               </li>
             );
@@ -25,10 +22,7 @@ const Palette = props => {
 };
 
 Palette.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  theme: PropTypes.number.isRequired,
-  colors: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isChecked: PropTypes.bool.isRequired
-}
+  paletteInfo: PropTypes.object.isRequired
+};
 
 export default Palette;

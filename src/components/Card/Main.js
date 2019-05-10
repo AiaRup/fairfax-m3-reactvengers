@@ -1,12 +1,12 @@
 import React from 'react';
-// import PreviewCard from './PreviewCard';
+import PreviewCard from './PreviewCard';
 import Form from './Form';
 
 const Main = () => {
   return(
    <main className="page__main-card">
     <div className="wrapper">
-      {/* <PreviewCard /> */}
+      <PreviewCard />
       <Form />
     </div>
   </main>

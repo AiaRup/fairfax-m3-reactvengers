@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import adalabLogo from '../../images/adalab-logo.png';
 
 const Footer = props => {
@@ -19,6 +20,10 @@ const Footer = props => {
       </div>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  teamName: PropTypes.string
 };
 
 export default Footer;

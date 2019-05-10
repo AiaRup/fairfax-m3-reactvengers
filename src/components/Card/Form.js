@@ -4,7 +4,6 @@ import Share from './Share/Share';
 import Fill from './Fill/Fill';
 import Design from './Design/Design';
 
-
 const ARRAYTITLE = [
   {
     wrapperClass: 'design__title-wrapper',
@@ -32,7 +31,8 @@ const ARRAYTITLE = [
   }
 ];
 
-const Form = () => {
+const Form = props => {
+  const { updateUser } = props;
   return (
     <form className="main__settings" action="" method="POST">
       {/* props to pass to the collapse component */}
@@ -40,10 +40,10 @@ const Form = () => {
         <Design />
       </Collapsible>
       <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena">
-        <Fill />
+        <Fill updateUser={updateUser} />
       </Collapsible>
       <Collapsible titleInfo={ARRAYTITLE[2]} fieldsetClass="share__main" legendText="comparte">
-        <Share/>
+        <Share />
       </Collapsible>
     </form>
   );

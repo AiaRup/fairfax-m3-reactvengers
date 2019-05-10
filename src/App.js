@@ -58,35 +58,25 @@ class App extends Component {
   }
 
   changeIconState(value, id) {
-    // find the icon with the id provided
-    const iconState = this.state.iconsStateArr.find((icon) => icon.id === id);
-    const index = this.state.iconsStateArr.findIndex((icon) => icon.id === id);
-    // change the property isVisible of this icon object
-    iconState.isVisible = value ? true : false;
-    console.log('iconState', iconState.isVisible);
-    // create new array and add the new icon object
-    this.setState((prevState, props) => {
-      const newArr = [...this.state.iconsStateArr];
-      newArr.splice(index, 1, iconState);
-      console.log('newArr', newArr)
-      return { iconsStateArr: newArr };
-    });
-    // update icons state
-
-
-
-
-    // if (value) {
-    //   iconState.isVisible = true;
-    // } else {
-    //   iconState.isVisible = false;
-    // }
-  }
-
-
+    if (id !== 'name' && id !== 'job') {
+      // find the icon with the id provided
+      const iconState = this.state.iconsStateArr.find((icon) => icon.id === id);
+      const index = this.state.iconsStateArr.findIndex((icon) => icon.id === id);
+      // change the property isVisible of this icon object
+      iconState.isVisible = value ? true : false;
+      // update icons state
+      this.setState((prevState, props) => {
+        const newArr = [...this.state.iconsStateArr];
+        // create new array and add the new icon object
+        newArr.splice(index, 1, iconState);
+        return { iconsStateArr: newArr };
+      });
+    }
+  };
 
   render() {
     const { userProfile, iconsStateArr } = this.state;
+
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
       <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr}/>

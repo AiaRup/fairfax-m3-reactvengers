@@ -6,8 +6,6 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
     const getValue = (event) => {
       const value = event.currentTarget.value;
       updateUser(value, inputId);
-      console.log('value', value);
-      console.log('id', inputId);
     }
 
 

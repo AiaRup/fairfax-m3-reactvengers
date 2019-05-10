@@ -1,68 +1,9 @@
 import React from 'react';
 import Collapsible from './Collapsible';
-import Palette from './Palette';
-import Share from './Share';
-import Fill from './Fill';
+import Share from './Share/Share';
+import Fill from './Fill/Fill';
+import Design from './Design/Design';
 
-const ARRAYPALETTE = [
-  {
-    inputValue: 'paletteblue',
-    theme: 1,
-    isChecked: true,
-    colors: [
-      {
-        hex: '#114e4e',
-        name: 'Dark cyan'
-      },
-      {
-        hex: '#438792',
-        name: 'Dirty blue'
-      },
-      {
-        hex: '#a2deaf',
-        name: 'Hospital green'
-      }
-    ]
-  },
-  {
-    inputValue: 'palettered',
-    theme: 2,
-    isChecked: false,
-    colors: [
-      {
-        hex: '#420101',
-        name: 'Chocolatte'
-      },
-      {
-        hex: '#bd1010',
-        name: 'Thunderbird'
-      },
-      {
-        hex: '#e95626',
-        name: 'Flamingo orange'
-      }
-    ]
-  },
-  {
-    inputValue: 'palettegrey',
-    theme: 3,
-    isChecked: false,
-    colors: [
-      {
-        hex: '#3e5b65',
-        name: 'Fiord'
-      },
-      {
-        hex: '#dfe5eb',
-        name: 'Mystic'
-      },
-      {
-        hex: '#a0c0cf',
-        name: 'Rock blue'
-      }
-    ]
-  }
-];
 
 const ARRAYTITLE = [
   {
@@ -96,14 +37,7 @@ const Form = () => {
     <form className="main__settings" action="" method="POST">
       {/* props to pass to the collapse component */}
       <Collapsible titleInfo={ARRAYTITLE[0]} fieldsetClass="design__main" legendText="diseña">
-        <div className="design__colors section__collapse">
-          <p className="design__colors-title">colores</p>
-          <ul className="design__colors-list">
-            {ARRAYPALETTE.map((palette, index) =>
-              <Palette paletteInfo={palette} key={index}/>
-            )}
-          </ul>
-        </div>
+        <Design />
       </Collapsible>
       <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena">
         <Fill />

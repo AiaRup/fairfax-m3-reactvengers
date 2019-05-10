@@ -1,5 +1,5 @@
 import React from 'react';
-import PreviewCard from './PreviewCard';
+import PreviewCard from './PreviewCard/PreviewCard';
 import Form from './Form';
 
 const Main = () => {

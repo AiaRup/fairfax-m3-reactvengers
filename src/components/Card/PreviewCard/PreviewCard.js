@@ -30,6 +30,9 @@ const ARRICON = [
 
 const PreviewCard = props => {
   const {user: {name, job, email, phone, linkedin, github, photo, palette}, iconsStateArr} = props;
+  //cambiamos el string vacio del objeto para que lo sustituya por nombre y apellido cada vez que borremos el campo
+  const newName = name ? name: 'nombre apellido'
+  const newJob = job ? job: 'Front-end developer'
   const iconsData = [ email, phone, linkedin, github ]
     return (
         <section className="main__preview">
@@ -39,8 +42,8 @@ const PreviewCard = props => {
                     reset
                 </button>
                 <div className="card__header ">
-                  <h2 className="card__name ">{name}</h2>
-                  <p className="card__job">{job}</p>
+                  <h2 className="card__name ">{newName}</h2>
+                  <p className="card__job">{newJob}</p>
                 </div>
                 <div className="card__image js__profile-image"><img className="img__user" src="" alt="" />
                 </div>
@@ -54,6 +57,11 @@ const PreviewCard = props => {
 
     )
 }
+    //si no recibe props tiene que poner estos strings
+//     PreviewCard.defaultProps = {
+//     newName: 'nombre apellido',
+//     newJob: 'Front-end developer'
+//   };
 
 export default PreviewCard;
 

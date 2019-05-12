@@ -16,16 +16,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // defaultUser: {
-      //   name: 'nombre apellido',
-      //   job: 'Front-end developer',
-      //   photo: imageUrlBase,
-      //   palette: 1,
-      //   email: '',
-      //   phone: '',
-      //   linkedin: '',
-      //   github: ''
-      // },
       userProfile: {
         name: '',
         job: '',

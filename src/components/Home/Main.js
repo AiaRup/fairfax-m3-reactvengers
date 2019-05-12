@@ -28,7 +28,6 @@ const Main = props => {
           </ul>
         </div>
         <div className="main__landing-start">
-          {' '}
           <a href="createCard.html" className="main__landing-link">
             {btnText}
           </a>

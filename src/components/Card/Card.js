@@ -9,7 +9,7 @@ const Card = props => {
   return (
     <div className="page-card">
       <Header />
-      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr}/>
+      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} />
       <Footer />
     </div>
   );

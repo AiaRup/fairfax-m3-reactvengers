@@ -61,18 +61,17 @@ const ARRAYPALETTE = [
   }
 ];
 
-
 const Design = () => {
   return (
     <div className="design__colors section__collapse">
       <p className="design__colors-title">colores</p>
       <ul className="design__colors-list">
-        {ARRAYPALETTE.map((palette, index) =>
-          <Palette paletteInfo={palette} key={index}/>
-        )}
+        {ARRAYPALETTE.map((palette, index) => (
+          <Palette paletteInfo={palette} key={index} />
+        ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Design;

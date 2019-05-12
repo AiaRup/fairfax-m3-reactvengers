@@ -8,7 +8,7 @@ const Main = props => {
   return (
     <main className="page__main-card">
       <div className="wrapper">
-        <PreviewCard user={user} iconsStateArr={iconsStateArr}/>
+        <PreviewCard user={user} iconsStateArr={iconsStateArr} />
         <Form updateUser={updateUser} />
       </div>
     </main>

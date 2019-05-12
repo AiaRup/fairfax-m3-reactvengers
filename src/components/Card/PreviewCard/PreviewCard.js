@@ -34,6 +34,7 @@ const PreviewCard = props => {
   const newName = name ? name: 'nombre apellido'
   const newJob = job ? job: 'Front-end developer'
   const iconsData = [ email, phone, linkedin, github ]
+
     return (
         <section className="main__preview">
             <div className="preview__card theme1">
@@ -49,20 +50,21 @@ const PreviewCard = props => {
                 </div>
                 <ul className="card__links-list">
                     {ARRICON.map((icon, index) =>
-                        <IconLink liClass={icon.liClass} linkClass={icon.linkClass} iconClass={icon.iconClass} key={index} iconsData={iconsData[index]} hrefDefault={icon.hrefDefault} isVisible={iconsStateArr[index].isVisible}/>
+                        <IconLink
+                        liClass={icon.liClass}
+                        linkClass={icon.linkClass}
+                        iconClass={icon.iconClass}
+                        key={index}
+                        iconsData={iconsData[index]}
+                        hrefDefault={icon.hrefDefault}
+                        isVisible={iconsStateArr[index].isVisible}
+                        />
                     )}
                 </ul>
             </div>
         </section>
-
     )
 }
-    //si no recibe props tiene que poner estos strings
-//     PreviewCard.defaultProps = {
-//     newName: 'nombre apellido',
-//     newJob: 'Front-end developer'
-//   };
 
 export default PreviewCard;
 
-// isVisible={iconsStateArr[index].isVisible}

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TitleCollapsible = ({ titleInfo: { wrapperClass, containerClass, iconClass, titleClass, title, arrowClass } }) => {
+const TitleCollapsible = ({ titleInfo: { wrapperClass, containerClass, iconClass, titleClass, title, arrowClass }, changeCollapsible }) => {
   return (
-    <div className={`${wrapperClass} collapse__title`}>
+    <div className={`${wrapperClass} collapse__title`} onClick={changeCollapsible}>
       <div className={containerClass}>
         <i className={iconClass} />
         <h3 className={titleClass}>{title}</h3>

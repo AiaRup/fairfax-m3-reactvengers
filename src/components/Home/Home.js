@@ -24,7 +24,7 @@ Home.defaultProps = {
   title: 'Crea tu tarjeta de visita',
   description: 'Crea mejores contactos profesionales de forma fácil y cómoda',
   iconsArr: ['Diseña', 'Rellena', 'Comparte'],
-  btnText: 'comenzar',
+  btnText: 'comenzar'
 };
 
 Home.propTypes = {

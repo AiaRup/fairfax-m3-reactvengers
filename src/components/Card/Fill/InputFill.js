@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo, updateUser}) => {
+const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo,     updateUser}) => {
 
     const getValue = (event) => {
       const value = event.currentTarget.value;
       updateUser(value, inputId);
     }
-
-
 
   return (
     <div className="fill__field-container">

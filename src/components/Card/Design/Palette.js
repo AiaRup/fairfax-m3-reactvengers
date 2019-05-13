@@ -10,7 +10,7 @@ const Palette = props => {
         <ul className="palettecolor-list">
           {colors.map((color, index) => {
             return (
-              <li className="rectangle" key={index} style={{backgroundColor: color.hex}}>
+              <li className="rectangle" key={index} style={{ backgroundColor: color.hex }}>
                 {color.name}
               </li>
             );

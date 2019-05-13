@@ -35,7 +35,6 @@ const Form = props => {
   const { updateUser } = props;
   return (
     <form className="main__settings" action="" method="POST">
-      {/* props to pass to the collapse component */}
       <Collapsible titleInfo={ARRAYTITLE[0]} fieldsetClass="design__main" legendText="diseña">
         <Design />
       </Collapsible>

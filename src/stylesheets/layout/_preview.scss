@@ -64,7 +64,7 @@
     font-family: $montse;
     font-size: rem(16);
     line-height: 1.25;
-    text-transform: initial;
+    text-transform: capitalize;
     word-break: break-all;
   }
 }
@@ -145,5 +145,3 @@
     border: rem(2) solid $color-blueGrey;
   }
 }
-
-

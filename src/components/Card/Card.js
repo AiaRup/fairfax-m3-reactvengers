@@ -5,11 +5,11 @@ import Main from '../Card/Main';
 import Footer from '../Home/Footer';
 
 const Card = props => {
-  const { user, updateUser, iconsStateArr } = props;
+  const { user, updateUser, iconsStateArr, selectPalette } = props;
   return (
     <div className="page-card">
       <Header />
-      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} />
+      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} selectPalette={selectPalette}/>
       <Footer />
     </div>
   );

@@ -61,13 +61,14 @@ const ARRAYPALETTE = [
   }
 ];
 
-const Design = () => {
+const Design = (props) => {
+  const {selectPalette} = props;
   return (
     <div className="design__colors section__collapse">
       <p className="design__colors-title">colores</p>
       <ul className="design__colors-list">
         {ARRAYPALETTE.map((palette, index) => (
-          <Palette paletteInfo={palette} key={index} />
+          <Palette paletteInfo={palette} key={index} selectPalette={selectPalette}/>
         ))}
       </ul>
     </div>

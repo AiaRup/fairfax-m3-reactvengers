@@ -34,10 +34,11 @@ const PreviewCard = props => {
   const newName = name ? name: 'nombre apellido'
   const newJob = job ? job: 'Front-end developer'
   const iconsData = [ email, phone, linkedin, github ]
+  const defaultPalette = palette ? palette: 1;
 
     return (
         <section className="main__preview">
-            <div className="preview__card theme1">
+            <div className={`preview__card theme${defaultPalette}`}>
                 <button className="preview__button">
                   <i className="far fa-trash-alt trash-icon"></i>
                     reset

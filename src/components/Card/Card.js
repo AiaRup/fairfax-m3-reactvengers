@@ -5,11 +5,11 @@ import Main from '../Card/Main';
 import Footer from '../Home/Footer';
 
 const Card = props => {
-  const { user, updateUser, iconsStateArr } = props;
+  const { user, updateUser, iconsStateArr, resetInfo } = props;
   return (
     <div className="page-card">
       <Header />
-      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} />
+      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} resetInfo={resetInfo}/>
       <Footer />
     </div>
   );

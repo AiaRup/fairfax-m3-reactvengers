@@ -3,29 +3,14 @@ import TitleCollapsible from './TitleCollapsible';
 
 class Collapsible extends React.Component {
 
-    constructor(props) {
-      super(props);
-      this.state = {
-
-        collapsibleArr: [
-          { id: 'design', isVisible: true },
-          { id: 'fill', isVisible: false },
-          { id: 'share', isVisible: false }
-        ]
-      }
-      this.changeCollapsible = this.changeCollapsible.bind(this);
-    }
-
-  changeCollapsible (event) {
-    console.log(event.currentTarget);
-  }
   render () {
-    const {fieldsetClass, titleInfo, children, legendText} = this.props
+    const {fieldsetClass, titleInfo, children, legendText, collapsibleObject,changeCollapsible} = this.props
+    // const contentChildren = collapsibleObject.isVisible ? {children} : '';
     return (
       <fieldset className={`form__fieldset ${fieldsetClass} fieldset__active`}>
       <legend className="fieldset__legend">{legendText}</legend>
-          <TitleCollapsible titleInfo={titleInfo} changeCollapsible={this.changeCollapsible}/>
-          {children}
+          <TitleCollapsible titleInfo={titleInfo} changeCollapsible={changeCollapsible} />
+          {collapsibleObject.isVisible && children}
     </fieldset>
     )
   }

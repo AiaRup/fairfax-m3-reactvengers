@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
-//import { isUpdateExpression } from '@babel/types';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -31,7 +30,6 @@ class App extends Component {
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
-    this.resetInfo = this.resetInfo.bind(this);
   }
 
   updateUser(value, id) {
@@ -59,30 +57,12 @@ class App extends Component {
     }
   }
 
-  resetInfo(){
-    const userReset ={
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      photo: '',
-      palette: ''
-    }
-    const newIconsArr = this.state.iconsStateArr.map(icon => {
-      icon.isVisible = false;
-      return icon;
-    });
-    this.setState({ iconsStateArr: newIconsArr, userProfile : userReset });
-  }
-
   render() {
     const { userProfile, iconsStateArr } = this.state;
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} resetInfo={this.resetInfo}/>
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} />
     );
   }
 }

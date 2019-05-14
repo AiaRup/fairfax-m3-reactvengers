@@ -3,6 +3,7 @@ import Collapsible from './Collapsible';
 import Share from './Share/Share';
 import Fill from './Fill/Fill';
 import Design from './Design/Design';
+import PropTypes from 'prop-types';
 
 const ARRAYTITLE = [
   {
@@ -32,11 +33,11 @@ const ARRAYTITLE = [
 ];
 
 const Form = props => {
-  const { updateUser } = props;
+  const { updateUser, selectPalette } = props;
   return (
     <form className="main__settings" action="" method="POST">
       <Collapsible titleInfo={ARRAYTITLE[0]} fieldsetClass="design__main" legendText="diseña">
-        <Design />
+        <Design selectPalette={selectPalette}/>
       </Collapsible>
       <Collapsible titleInfo={ARRAYTITLE[1]} fieldsetClass="fill__container" legendText="rellena">
         <Fill updateUser={updateUser} />
@@ -48,4 +49,8 @@ const Form = props => {
   );
 };
 
+Form.propTypes = {
+  updateUser: PropTypes.func.isRequired,
+  selectPalette: PropTypes.func.isRequired
+}
 export default Form;

@@ -1,5 +1,6 @@
 import React from 'react';
 import Palette from './Palette';
+import PropTypes from 'prop-types';
 
 const ARRAYPALETTE = [
   {
@@ -74,5 +75,9 @@ const Design = (props) => {
     </div>
   );
 };
+
+Design.propTypes = {
+  selectPalette: PropTypes.func.isRequired
+}
 
 export default Design;

@@ -3,6 +3,7 @@ import Collapsible from './Collapsible';
 import Share from './Share/Share';
 import Fill from './Fill/Fill';
 import Design from './Design/Design';
+import PropTypes from 'prop-types';
 
 const ARRAYTITLE = [
   {
@@ -48,4 +49,8 @@ const Form = props => {
   );
 };
 
+Form.propTypes = {
+  updateUser: PropTypes.func.isRequired,
+  selectPalette: PropTypes.func.isRequired
+}
 export default Form;

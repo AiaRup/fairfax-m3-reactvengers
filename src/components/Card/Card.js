@@ -3,16 +3,23 @@ import React from 'react';
 import Header from '../Home/Header';
 import Main from '../Card/Main';
 import Footer from '../Home/Footer';
+import PropTypes from 'prop-types';
 
 const Card = props => {
-  const { user, updateUser, iconsStateArr, selectPalette } = props;
   return (
     <div className="page-card">
       <Header />
-      <Main user={user} updateUser={updateUser} iconsStateArr={iconsStateArr} selectPalette={selectPalette}/>
+      <Main {...props}/>
       <Footer />
     </div>
   );
 };
+
+Card.propTypes = {
+  user: PropTypes.object.isRequired,
+  updateUser: PropTypes.func.isRequired,
+  iconsStateArr: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selectPalette: PropTypes.func.isRequired
+}
 
 export default Card;

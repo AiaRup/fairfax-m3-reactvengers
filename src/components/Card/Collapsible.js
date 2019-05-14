@@ -18,12 +18,12 @@ class Collapsible extends React.Component {
 }
 
 Collapsible.propTypes = {
-  fieldsetClass: PropTypes.string,
-  titleInfo: PropTypes.object,
-  children: PropTypes.element,
-  legendText: PropTypes.string,
-  collapsibleObject: PropTypes.object,
-  changeCollapsible: PropTypes.func
+  fieldsetClass: PropTypes.string.isRequired,
+  titleInfo: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
+  legendText: PropTypes.string.isRequired,
+  collapsibleObject: PropTypes.object.isRequired,
+  changeCollapsible: PropTypes.func.isRequired
 }
 
 export default Collapsible;

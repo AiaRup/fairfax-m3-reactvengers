@@ -31,7 +31,7 @@ InputFill.propTypes = {
   inputType: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
   inputPlaceholder: PropTypes.string.isRequired,
-  dataInfo: PropTypes.string
+  dataInfo: PropTypes.string.isRequired
 }
 
 export default InputFill;

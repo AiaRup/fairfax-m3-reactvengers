@@ -4,13 +4,13 @@ import Form from './Form';
 import PropTypes from 'prop-types';
 
 const Main = props => {
-  const { user, updateUser, iconsStateArr, selectPalette, imageLoad, clickLoadImage } = props;
+  const { user, updateUser, iconsStateArr, selectPalette, imageLoad, clickLoadImage, getImage } = props;
 
   return (
     <main className="page__main-card">
       <div className="wrapper">
         <PreviewCard user={user} iconsStateArr={iconsStateArr} />
-        <Form updateUser={updateUser} selectPalette={selectPalette} imageLoad={imageLoad} clickLoadImage={clickLoadImage} />
+        <Form updateUser={updateUser} selectPalette={selectPalette} imageLoad={imageLoad} clickLoadImage={clickLoadImage} getImage={getImage} user={user} />
       </div>
     </main>
   );

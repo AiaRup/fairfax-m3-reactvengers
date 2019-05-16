@@ -16,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.imageLoad = React.createRef();
+    this.reader = '';
 
     this.state = {
       userProfile: {
@@ -34,6 +35,7 @@ class App extends Component {
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
     this.clickLoadImage = this.clickLoadImage.bind(this);
+    this.getImage = this.getImage.bind(this);
   }
 
   updateUser(value, id) {
@@ -67,8 +69,20 @@ class App extends Component {
     this.setState({userProfile: newUser});
   }
 
-  clickLoadImage () {
-    this.imageLoad.current.focus();
+  clickLoadImage (event) {
+    console.log('first function');
+    this.imageLoad.current.click();
+  }
+
+  getImage(event) {
+    const myFile = event.currentTarget.files[0];
+    this.reader = new FileReader();
+    this.reader.readAsDataURL(myFile);
+    this.reader.onload = (event) => {
+      const newUser = {...this.state.userProfile}
+      newUser.photo = event.target.result;
+      this.setState({ userProfile: newUser });
+    };
   }
 
   render() {
@@ -76,7 +90,7 @@ class App extends Component {
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} />
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} />
     );
   }
 }

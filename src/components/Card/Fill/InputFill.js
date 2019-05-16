@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo,     updateUser}) => {
+const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inputPlaceholder, dataInfo, updateUser, valueInput}) => {
 
     const getValue = (event) => {
       const value = event.currentTarget.value;
@@ -19,6 +19,7 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
         placeholder={inputPlaceholder}
         data-info={dataInfo}
         onChange={getValue}
+        value={valueInput}
       />
     </div>
   )
@@ -30,7 +31,10 @@ InputFill.propTypes = {
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
-  inputPlaceholder: PropTypes.string.isRequired
+  inputPlaceholder: PropTypes.string.isRequired,
+  dataInfo: PropTypes.string.isRequired,
+  valueInput: PropTypes.string.isRequired,
+  updateUser: PropTypes.func.isRequired
 }
 
 export default InputFill;

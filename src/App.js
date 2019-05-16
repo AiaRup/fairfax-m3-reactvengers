@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
-//import { isUpdateExpression } from '@babel/types';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -25,12 +24,13 @@ class App extends Component {
         linkedin: '',
         github: '',
         photo: '',
-        palette: 1
+        palette: ''
       },
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
+    this.changeColorPalette = this.changeColorPalette.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
   }
 
@@ -59,6 +59,12 @@ class App extends Component {
     }
   }
 
+  changeColorPalette (id){
+    const newUser = {...this.state.userProfile};
+    newUser.palette = id;
+    this.setState({userProfile: newUser});
+  }
+
   resetInfo(){
     const userReset ={
       name: '',
@@ -82,7 +88,7 @@ class App extends Component {
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} resetInfo={this.resetInfo}/>
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} resetInfo={this.resetInfo}/> 
     );
   }
 }

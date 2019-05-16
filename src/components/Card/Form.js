@@ -53,10 +53,8 @@ changeCollapsible (event) {
 
     if(event.currentTarget.id === item.id) {
       item.isVisible = true;
-      console.log(item);
     } else {
       item.isVisible = false;
-      console.log(item);
     }
     return item;
   })

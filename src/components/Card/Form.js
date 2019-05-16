@@ -49,18 +49,18 @@ class Form extends React.Component {
     this.changeCollapsible = this.changeCollapsible.bind(this);
   }
 
-changeCollapsible (event) {
-  const newCollapsibleArr = this.state.collapsibleArr.map((item) => {
-
-    if(event.currentTarget.id === item.id) {
-      item.isVisible = true;
-    } else {
-      item.isVisible = false;
-    }
-    return item;
-  })
-    this.setState ({collapsibleArr: newCollapsibleArr})
+  changeCollapsible (event) {
+    const newCollapsibleArr = this.state.collapsibleArr.map((item) => {
+      if(event.currentTarget.id === item.id) {
+        item.isVisible = !item.isVisible;
+      } else {
+        item.isVisible = false;
+      }
+      return item;
+    })
+      this.setState ({collapsibleArr: newCollapsibleArr})
   }
+
   render () {
     const { updateUser, selectPalette } = this.props;
 

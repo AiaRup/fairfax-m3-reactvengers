@@ -3,12 +3,12 @@ import InputFill from './InputFill';
 import ImageLoad from './ImageLoad';
 
 const Fill = props => {
-  const { updateUser } = props;
+  const { updateUser, imageLoad, clickLoadImage } = props;
   return (
     <div className="fill__container-form section__collapse">
       <InputFill labelFor={'name'} labelContent={'nombre completo'} inputId={'name'} inputType={'text'} inputName={'completeName'} inputPlaceholder={'Ej: Sally Jill'} updateUser={updateUser} />
       <InputFill labelFor={'job'} labelContent={'puesto'} inputId={'job'} inputType={'text'} inputName={'job'} inputPlaceholder={'Ej: Front-end unicorn'} updateUser={updateUser} />
-      <ImageLoad />
+      <ImageLoad imageLoad={imageLoad} clickLoadImage={clickLoadImage} />
       <InputFill labelFor={'email'} labelContent={'email'} inputId={'email'} inputType={'email'} inputName={'email'} inputPlaceholder={'Ej: sally-hill@gmail.com'} dataInfo={'mailto:'} updateUser={updateUser} />
       <InputFill labelFor={'phone'} labelContent={'teléfono'} inputId={'phone'} inputType={'tel'} inputName={'phoneNumber'} inputPlaceholder={'Ej: 555-55-55-55'} dataInfo={'tel:'} updateUser={updateUser} />
       <InputFill labelFor={'linkedin'} labelContent={'linkedin'} inputId={'linkedin'} inputType={'text'} inputName={'linkedin'} inputPlaceholder={'Ej: sally.hill'} dataInfo={'https://www.linkedin.com/in/'} updateUser={updateUser} />

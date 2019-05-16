@@ -15,6 +15,8 @@ import './stylesheets/App.scss';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.imageLoad = React.createRef();
+
     this.state = {
       userProfile: {
         name: '',
@@ -31,6 +33,7 @@ class App extends Component {
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
+    this.clickLoadImage = this.clickLoadImage.bind(this);
   }
 
   updateUser(value, id) {
@@ -64,12 +67,16 @@ class App extends Component {
     this.setState({userProfile: newUser});
   }
 
+  clickLoadImage () {
+    this.imageLoad.current.focus();
+  }
+
   render() {
     const { userProfile, iconsStateArr } = this.state;
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette}/>
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} />
     );
   }
 }

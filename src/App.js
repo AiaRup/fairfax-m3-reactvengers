@@ -24,7 +24,7 @@ class App extends Component {
         linkedin: '',
         github: '',
         photo: '',
-        palette: ''
+        palette: 1
       },
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
@@ -74,7 +74,7 @@ class App extends Component {
       linkedin: '',
       github: '',
       photo: '',
-      palette: ''
+      palette: 1
     }
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;

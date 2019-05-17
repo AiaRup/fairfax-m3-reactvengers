@@ -21,6 +21,6 @@ Main.propTypes = {
   updateUser: PropTypes.func.isRequired,
   iconsStateArr: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectPalette: PropTypes.func.isRequired
-}
+};
 
 export default Main;

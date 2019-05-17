@@ -8,9 +8,7 @@ const IconLink = ({ liClass, linkClass, iconClass, iconsData, hrefDefault, isVis
         <i className={iconClass} />
       </a>
     </li>
-  ) : (
-    ''
-  );
+  ) : null;
   return content;
 };
 

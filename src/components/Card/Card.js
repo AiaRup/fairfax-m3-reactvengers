@@ -9,7 +9,7 @@ const Card = props => {
   return (
     <div className="page-card">
       <Header />
-      <Main {...props}/>
+      <Main {...props} />
       <Footer />
     </div>
   );
@@ -20,6 +20,6 @@ Card.propTypes = {
   updateUser: PropTypes.func.isRequired,
   iconsStateArr: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectPalette: PropTypes.func.isRequired
-}
+};
 
 export default Card;

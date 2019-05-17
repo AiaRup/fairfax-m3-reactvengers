@@ -93,14 +93,14 @@ class App extends Component {
       phone: '',
       linkedin: '',
       github: '',
-      photo: '',
+      photo: imageUrlBase,
       palette: 1
     };
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset });
+    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset, isDefaultImage: true });
   }
 
   render() {

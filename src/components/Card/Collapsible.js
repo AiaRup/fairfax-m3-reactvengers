@@ -3,17 +3,16 @@ import TitleCollapsible from './TitleCollapsible';
 import PropTypes from 'prop-types';
 
 class Collapsible extends React.Component {
-
-  render () {
-    let {fieldsetClass, titleInfo, children, legendText, collapsibleObject, changeCollapsible} = this.props
+  render() {
+    let { fieldsetClass, titleInfo, children, legendText, collapsibleObject, changeCollapsible } = this.props;
     fieldsetClass = collapsibleObject.isVisible ? `${fieldsetClass} fieldset__active` : fieldsetClass;
     return (
       <fieldset className={`form__fieldset ${fieldsetClass}`}>
-      <legend className="fieldset__legend">{legendText}</legend>
-          <TitleCollapsible titleInfo={titleInfo} changeCollapsible={changeCollapsible} />
-          {collapsibleObject.isVisible && children}
-    </fieldset>
-    )
+        <legend className="fieldset__legend">{legendText}</legend>
+        <TitleCollapsible titleInfo={titleInfo} changeCollapsible={changeCollapsible} />
+        {collapsibleObject.isVisible && children}
+      </fieldset>
+    );
   }
 }
 
@@ -24,6 +23,6 @@ Collapsible.propTypes = {
   legendText: PropTypes.string.isRequired,
   collapsibleObject: PropTypes.object.isRequired,
   changeCollapsible: PropTypes.func.isRequired
-}
+};
 
 export default Collapsible;

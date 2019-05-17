@@ -1,13 +1,13 @@
 import React from 'react';
 import IconLink from './IconLink';
 import { iconsArr } from '../../../data/appData.js';
+
 const PreviewCard = props => {
   const {
     user: { name, job, email, phone, linkedin, github, photo, palette },
     iconsStateArr,
     resetInfo
   } = props;
-  //cambiamos el string vacio del objeto para que lo sustituya por nombre y apellido cada vez que borremos el campo
   const iconsData = [email, phone, linkedin, github];
 
   return (

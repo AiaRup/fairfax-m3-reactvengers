@@ -3,12 +3,23 @@ import PropTypes from 'prop-types';
 
 const Palette = props => {
   const { inputValue, theme, colors } = props.paletteInfo;
-  const {userPalette,selectPalette} = props;
-  const check = userPalette === theme ? true: false
+  const { userPalette, selectPalette } = props;
+  const check = userPalette === theme ? true : false;
   return (
     <li className="colors-list-element">
       <label htmlFor={`selection${theme}`} className="design__label">
-        <input id={`selection${theme}`} type="radio" value={inputValue} name="palettecolors" className={`palettecolors theme${theme}`} data-theme={theme} checked = {check} onChange ={()=>{selectPalette(theme)}}/>
+        <input
+          id={`selection${theme}`}
+          type="radio"
+          value={inputValue}
+          name="palettecolors"
+          className={`palettecolors theme${theme}`}
+          data-theme={theme}
+          checked={check}
+          onChange={() => {
+            selectPalette(theme);
+          }}
+        />
         <ul className="palettecolor-list">
           {colors.map((color, index) => {
             return (

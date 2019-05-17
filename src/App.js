@@ -82,7 +82,7 @@ class App extends Component {
       const newUser = {...this.state.userProfile}
       newUser.photo = reader.result;
       this.setState({ userProfile: newUser, isDefaultImage: false });
-    };
+    };}
   resetInfo(){
     const userReset ={
       name: '',

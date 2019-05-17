@@ -62,7 +62,7 @@ class Form extends React.Component {
   }
 
   render () {
-    const { updateUser, selectPalette, user } = this.props;
+    const { updateUser, selectPalette, user, cardData, fetchNewResponse } = this.props;
 
       return (
         <form className="main__settings" action="" method="POST">
@@ -73,7 +73,7 @@ class Form extends React.Component {
             <Fill updateUser={updateUser} user={user} />
           </Collapsible>
           <Collapsible titleInfo={ARRAYTITLE[2]} collapsibleObject={this.state.collapsibleArr[2]} fieldsetClass="share__main" legendText="comparte" changeCollapsible = {this.changeCollapsible}>
-            <Share />
+            <Share cardData={cardData} fetchNewResponse={fetchNewResponse} />
           </Collapsible>
         </form>
       );

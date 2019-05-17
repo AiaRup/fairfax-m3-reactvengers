@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Twitter= ()=>{
+const Twitter= () =>{
   return(
     <div className="share__hidden hidden">
       <p className="share__text">La tarjeta ha sido creada:</p>

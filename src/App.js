@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
+import {fetchResponse} from './services/ResponseService';
 import './stylesheets/App.scss';
 
 // const INFOLANDING = {
@@ -11,7 +12,6 @@ import './stylesheets/App.scss';
 //   btnText: 'comenzar',
 //   teamName: 'ReactVengers'
 // };
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,14 +24,16 @@ class App extends Component {
         linkedin: '',
         github: '',
         photo: '',
-        palette: 1
+        palette: 1,
       },
+      cardData: '',
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
+    this.fetchNewResponse = this.fetchNewResponse.bind(this);
   }
 
   updateUser(value, id) {
@@ -83,12 +85,26 @@ class App extends Component {
     this.setState({ iconsStateArr: newIconsArr, userProfile : userReset });
   }
 
+  fetchNewResponse (event) {
+    console.log('hola')
+    event.preventDefault();
+    fetchResponse(this.state.userProfile)
+      .then(data => {
+
+          this.setState({
+            cardData: data.cardURL,
+          });
+      });
+
+  }
+
   render() {
-    const { userProfile, iconsStateArr } = this.state;
+    const { userProfile, iconsStateArr, cardData } = this.state;
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} resetInfo={this.resetInfo}/> 
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} resetInfo={this.resetInfo} cardData={cardData} fetchNewResponse={this.fetchNewResponse} />
+
     );
   }
 }

@@ -4,7 +4,14 @@ import ImageLoad from './ImageLoad';
 import PropTypes from 'prop-types';
 
 const Fill = props => {
-  const { updateUser, user:{name,job,email,phone,linkedin,github, photo}, imageLoad, clickLoadImage, getImage, isDefaultImage } = props;
+  const {
+    updateUser,
+    user: { name, job, email, phone, linkedin, github, photo },
+    imageLoad,
+    clickLoadImage,
+    getImage,
+    isDefaultImage
+  } = props;
   return (
     <div className="fill__container-form section__collapse">
       <InputFill valueInput={name} labelFor={'name'} labelContent={'nombre completo'} inputId={'name'} inputType={'text'} inputName={'completeName'} inputPlaceholder={'Ej: Sally Jill'} updateUser={updateUser} />
@@ -19,8 +26,12 @@ const Fill = props => {
 };
 
 Fill.propTypes = {
-  updateUser: PropTypes.func,
-  user: PropTypes.object
-}
+  updateUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  imageLoad: PropTypes.object.isRequired,
+  clickLoadImage: PropTypes.func.isRequired,
+  getImage: PropTypes.func.isRequired,
+  isDefaultImage: PropTypes.bool.isRequired
+};
 
 export default Fill;

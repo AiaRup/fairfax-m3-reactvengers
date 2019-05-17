@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
-import {fetchResponse} from './services/ResponseService';
+import { fetchResponse } from './services/ResponseService';
 import './stylesheets/App.scss';
-import {imageUrlBase} from './data/defaultImage';
+import { imageUrlBase } from './data/defaultImage.js';
+// import { infoLoading } from './data/appData.js';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -26,7 +27,7 @@ class App extends Component {
         linkedin: '',
         github: '',
         photo: imageUrlBase,
-        palette: 1,
+        palette: 1
       },
       cardData: '',
       isDefaultImage: true,
@@ -66,13 +67,13 @@ class App extends Component {
     }
   }
 
-  changeColorPalette (id){
-    const newUser = {...this.state.userProfile};
+  changeColorPalette(id) {
+    const newUser = { ...this.state.userProfile };
     newUser.palette = id;
-    this.setState({userProfile: newUser});
+    this.setState({ userProfile: newUser });
   }
 
-  clickLoadImage () {
+  clickLoadImage() {
     this.imageLoad.current.click();
   }
 
@@ -81,37 +82,36 @@ class App extends Component {
     const reader = new FileReader();
     reader.readAsDataURL(myFile);
     reader.onload = () => {
-      const newUser = {...this.state.userProfile}
+      const newUser = { ...this.state.userProfile };
       newUser.photo = reader.result;
       this.setState({ userProfile: newUser, isDefaultImage: false });
-    };}
-  resetInfo(){
-    const userReset ={
+    };
+  }
+  resetInfo() {
+    const userReset = {
       name: '',
       job: '',
       email: '',
       phone: '',
       linkedin: '',
       github: '',
-      photo: '',
+      photo: imageUrlBase,
       palette: 1
-    }
+    };
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile : userReset });
+    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset, isDefaultImage: true });
   }
 
-  fetchNewResponse (event) {
+  fetchNewResponse(event) {
     event.preventDefault();
-    fetchResponse(this.state.userProfile)
-      .then(data => {
-          this.setState({
-            cardData: data.cardURL,
-          });
+    fetchResponse(this.state.userProfile).then(data => {
+      this.setState({
+        cardData: data.cardURL
       });
-
+    });
   }
 
   render() {
@@ -119,7 +119,19 @@ class App extends Component {
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo} cardData={cardData} fetchNewResponse={this.fetchNewResponse} />
+      <Card
+        user={userProfile}
+        updateUser={this.updateUser}
+        iconsStateArr={iconsStateArr}
+        selectPalette={this.changeColorPalette}
+        imageLoad={this.imageLoad}
+        clickLoadImage={this.clickLoadImage}
+        getImage={this.getImage}
+        isDefaultImage={isDefaultImage}
+        resetInfo={this.resetInfo}
+        cardData={cardData}
+        fetchNewResponse={this.fetchNewResponse}
+      />
     );
   }
 }

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
+import { fetchResponse } from './services/ResponseService';
 import './stylesheets/App.scss';
 import { imageUrlBase } from './data/defaultImage.js';
 // import { infoLoading } from './data/appData.js';
@@ -13,7 +14,6 @@ import { imageUrlBase } from './data/defaultImage.js';
 //   btnText: 'comenzar',
 //   teamName: 'ReactVengers'
 // };
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +29,7 @@ class App extends Component {
         photo: imageUrlBase,
         palette: 1
       },
+      cardData: '',
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
@@ -38,6 +39,7 @@ class App extends Component {
     this.clickLoadImage = this.clickLoadImage.bind(this);
     this.getImage = this.getImage.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
+    this.fetchNewResponse = this.fetchNewResponse.bind(this);
   }
 
   updateUser(value, id) {
@@ -103,12 +105,33 @@ class App extends Component {
     this.setState({ iconsStateArr: newIconsArr, userProfile: userReset, isDefaultImage: true });
   }
 
+  fetchNewResponse(event) {
+    event.preventDefault();
+    fetchResponse(this.state.userProfile).then(data => {
+      this.setState({
+        cardData: data.cardURL
+      });
+    });
+  }
+
   render() {
-    const { userProfile, iconsStateArr, isDefaultImage } = this.state;
+    const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;
 
     return (
-      // <Home teamName={infoLoading.teamName} btnText={infoLoading.btnText} iconsArr={infoLoading.iconsArr} description={infoLoading.description} title={infoLoading.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo} />
+      // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
+      <Card
+        user={userProfile}
+        updateUser={this.updateUser}
+        iconsStateArr={iconsStateArr}
+        selectPalette={this.changeColorPalette}
+        imageLoad={this.imageLoad}
+        clickLoadImage={this.clickLoadImage}
+        getImage={this.getImage}
+        isDefaultImage={isDefaultImage}
+        resetInfo={this.resetInfo}
+        cardData={cardData}
+        fetchNewResponse={this.fetchNewResponse}
+      />
     );
   }
 }

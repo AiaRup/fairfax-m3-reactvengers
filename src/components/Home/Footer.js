@@ -12,7 +12,6 @@ const Footer = props => {
           <p className="footer__wildcards">{teamName}</p>
         </div>
         <div className="footer__logo">
-          {' '}
           <a href="https://adalab.es/" target="_blank" rel="noopener noreferrer">
             <img className="footer__logo-adalab" src={adalabLogo} alt="adalab logo" />
           </a>

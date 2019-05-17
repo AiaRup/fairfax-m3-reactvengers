@@ -28,7 +28,6 @@ const Main = props => {
           </ul>
         </div>
         <div className="main__landing-start">
-          {' '}
           <a href="createCard.html" className="main__landing-link">
             {btnText}
           </a>
@@ -38,14 +37,14 @@ const Main = props => {
   );
 };
 
-Home.defaultProps = {
+Main.defaultProps = {
   title: 'Crea tu tarjeta de visita',
   description: 'Crea mejores contactos profesionales de forma fácil y cómoda',
   iconsArr: ['Diseña', 'Rellena', 'Comparte'],
-  btnText: 'comenzar',
+  btnText: 'comenzar'
 };
 
-Home.propTypes = {
+Main.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   iconsArr: PropTypes.arrayOf(PropTypes.string),

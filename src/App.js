@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
 import { imageUrlBase } from './data/defaultImage.js';
-import { infoLoading } from './data/appData.js';
+// import { infoLoading } from './data/appData.js';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',

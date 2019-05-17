@@ -26,8 +26,12 @@ const Fill = props => {
 };
 
 Fill.propTypes = {
-  updateUser: PropTypes.func,
-  user: PropTypes.object
+  updateUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  imageLoad: PropTypes.object.isRequired,
+  clickLoadImage: PropTypes.func.isRequired,
+  getImage: PropTypes.func.isRequired,
+  isDefaultImage: PropTypes.bool.isRequired
 };
 
 export default Fill;

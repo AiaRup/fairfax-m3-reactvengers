@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = props => {
+const Header = () => {
   return (
     <header className="page__header">
       <div className="wrapper">

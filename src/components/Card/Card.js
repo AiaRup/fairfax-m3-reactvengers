@@ -19,7 +19,12 @@ Card.propTypes = {
   user: PropTypes.object.isRequired,
   updateUser: PropTypes.func.isRequired,
   iconsStateArr: PropTypes.arrayOf(PropTypes.object).isRequired,
-  selectPalette: PropTypes.func.isRequired
+  selectPalette: PropTypes.func.isRequired,
+  imageLoad: PropTypes.object.isRequired,
+  clickLoadImage: PropTypes.func.isRequired,
+  getImage: PropTypes.func.isRequired,
+  resetInfo: PropTypes.func.isRequired,
+  isDefaultImage: PropTypes.bool.isRequired
 };
 
 export default Card;

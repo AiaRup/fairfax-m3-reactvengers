@@ -17,7 +17,8 @@ IconLink.propTypes = {
   linkClass: PropTypes.string.isRequired,
   iconClass: PropTypes.string.isRequired,
   hrefDefault: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired
+  isVisible: PropTypes.bool.isRequired,
+  iconsData: PropTypes.string.isRequired
 };
 
 export default IconLink;

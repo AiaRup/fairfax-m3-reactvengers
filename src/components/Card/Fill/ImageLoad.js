@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ImageLoad = props => {
   let { imageLoad, clickLoadImage, getImage, photo, isDefaultImage } = props;
@@ -27,6 +28,14 @@ const ImageLoad = props => {
       </div>
     </div>
   );
+};
+
+ImageLoad.propTypes = {
+  photo: PropTypes.string.isRequired,
+  imageLoad: PropTypes.object.isRequired,
+  clickLoadImage: PropTypes.func.isRequired,
+  getImage: PropTypes.func.isRequired,
+  isDefaultImage: PropTypes.bool.isRequired
 };
 
 export default ImageLoad;

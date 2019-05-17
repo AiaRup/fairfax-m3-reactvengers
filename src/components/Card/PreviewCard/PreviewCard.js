@@ -1,6 +1,7 @@
 import React from 'react';
 import IconLink from './IconLink';
 import { iconsArr } from '../../../data/appData.js';
+import PropTypes from 'prop-types';
 
 const PreviewCard = props => {
   const {
@@ -32,6 +33,12 @@ const PreviewCard = props => {
       </div>
     </section>
   );
+};
+
+PreviewCard.propTypes = {
+  iconsStateArr: PropTypes.arrayOf(PropTypes.object).isRequired,
+  user: PropTypes.object.isRequired,
+  resetInfo: PropTypes.func.isRequired
 };
 
 export default PreviewCard;

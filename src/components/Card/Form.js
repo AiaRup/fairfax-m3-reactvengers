@@ -49,6 +49,10 @@ class Form extends React.Component {
 Form.propTypes = {
   updateUser: PropTypes.func.isRequired,
   selectPalette: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  isDefaultImage: PropTypes.bool.isRequired,
+  imageLoad: PropTypes.object.isRequired,
+  clickLoadImage: PropTypes.func.isRequired,
+  getImage: PropTypes.func.isRequired
 };
 export default Form;

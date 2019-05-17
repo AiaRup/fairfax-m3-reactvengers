@@ -36,7 +36,8 @@ const Palette = props => {
 
 Palette.propTypes = {
   paletteInfo: PropTypes.object.isRequired,
-  selectPalette: PropTypes.func.isRequired
+  selectPalette: PropTypes.func.isRequired,
+  userPalette: PropTypes.number.isRequired
 };
 
 export default Palette;

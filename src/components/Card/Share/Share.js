@@ -13,7 +13,7 @@ const Share=(props)=>{
         <img className="loading__img" src="assets/images/loading.gif" alt="Loading gif"/>
       </div>
     </div>
-    <Twitter/>
+    <Twitter cardData={props.cardData}/>
   </div>
   )
 }

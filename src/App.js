@@ -26,7 +26,7 @@ class App extends Component {
         linkedin: '',
         github: '',
         photo: imageUrlBase,
-        palette: ''
+        palette: 1
       },
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
@@ -36,6 +36,7 @@ class App extends Component {
     this.changeColorPalette = this.changeColorPalette.bind(this);
     this.clickLoadImage = this.clickLoadImage.bind(this);
     this.getImage = this.getImage.bind(this);
+    this.resetInfo = this.resetInfo.bind(this);
   }
 
   updateUser(value, id) {
@@ -82,6 +83,22 @@ class App extends Component {
       newUser.photo = reader.result;
       this.setState({ userProfile: newUser, isDefaultImage: false });
     };
+  resetInfo(){
+    const userReset ={
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+      palette: 1
+    }
+    const newIconsArr = this.state.iconsStateArr.map(icon => {
+      icon.isVisible = false;
+      return icon;
+    });
+    this.setState({ iconsStateArr: newIconsArr, userProfile : userReset });
   }
 
   render() {
@@ -89,7 +106,7 @@ class App extends Component {
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage}/>
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo}/>
     );
   }
 }

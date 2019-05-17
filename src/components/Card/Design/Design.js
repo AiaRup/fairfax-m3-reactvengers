@@ -6,7 +6,6 @@ const ARRAYPALETTE = [
   {
     inputValue: 'paletteblue',
     theme: 1,
-    isChecked: true,
     colors: [
       {
         hex: '#114e4e',
@@ -25,7 +24,6 @@ const ARRAYPALETTE = [
   {
     inputValue: 'palettered',
     theme: 2,
-    isChecked: false,
     colors: [
       {
         hex: '#420101',
@@ -44,7 +42,6 @@ const ARRAYPALETTE = [
   {
     inputValue: 'palettegrey',
     theme: 3,
-    isChecked: false,
     colors: [
       {
         hex: '#3e5b65',
@@ -63,13 +60,13 @@ const ARRAYPALETTE = [
 ];
 
 const Design = (props) => {
-  const {selectPalette} = props;
+  const {userPalette, selectPalette} = props;
   return (
     <div className="design__colors section__collapse">
       <p className="design__colors-title">colores</p>
       <ul className="design__colors-list">
         {ARRAYPALETTE.map((palette, index) => (
-          <Palette paletteInfo={palette} key={index} selectPalette={selectPalette}/>
+          <Palette paletteInfo={palette} key={index} userPalette={userPalette} selectPalette={selectPalette}/>
         ))}
       </ul>
     </div>
@@ -77,7 +74,8 @@ const Design = (props) => {
 };
 
 Design.propTypes = {
-  selectPalette: PropTypes.func.isRequired
+  selectPalette: PropTypes.func.isRequired,
+  userPalette: PropTypes.number.isRequired
 }
 
 export default Design;

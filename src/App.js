@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
+import {imageUrlBase} from './data/defaultImage';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -26,7 +27,7 @@ class App extends Component {
         phone: '',
         linkedin: '',
         github: '',
-        photo: '',
+        photo: imageUrlBase,
         palette: ''
       },
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
@@ -69,8 +70,7 @@ class App extends Component {
     this.setState({userProfile: newUser});
   }
 
-  clickLoadImage (event) {
-    console.log('first function');
+  clickLoadImage () {
     this.imageLoad.current.click();
   }
 
@@ -80,7 +80,7 @@ class App extends Component {
     this.reader.readAsDataURL(myFile);
     this.reader.onload = (event) => {
       const newUser = {...this.state.userProfile}
-      newUser.photo = event.target.result;
+      newUser.photo = this.reader.result;
       this.setState({ userProfile: newUser });
     };
   }

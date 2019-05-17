@@ -24,11 +24,11 @@ class ImageLoad extends React.Component {
           onChange={(event) => {getImage(event)}}
         />
         <div className="fill__preview-little js__profile-preview" style={{backgroundImage: `url(${photo})`}}>
-          <img className="img__user" src="" alt="user profile" />
+          <img className="img__user" src={photo} alt="User-profile-pic" />
         </div>
       </div>
       </div>
-        )
+      )
     }
   }
 

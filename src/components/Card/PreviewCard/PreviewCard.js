@@ -47,7 +47,7 @@ const PreviewCard = props => {
                   <h2 className="card__name ">{newName}</h2>
                   <p className="card__job">{newJob}</p>
                 </div>
-                <div className="card__image js__profile-image"><img className="img__user" src="" alt="" />
+                <div className="card__image js__profile-image" style={{backgroundImage: `url(${photo})`}}><img className="img__user" src={photo} alt="User-profile-pic" />
                 </div>
                 <ul className="card__links-list">
                     {ARRICON.map((icon, index) =>

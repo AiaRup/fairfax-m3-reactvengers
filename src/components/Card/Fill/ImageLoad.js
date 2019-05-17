@@ -1,9 +1,9 @@
 import React from 'react';
 
-class ImageLoad extends React.Component {
+const ImageLoad = (props) => {
 
-  render () {
-    let { imageLoad, clickLoadImage, getImage, photo } = this.props
+    let { imageLoad, clickLoadImage, getImage, photo, isDefaultImage } = props
+    const conditionStyle = isDefaultImage ? {backgroundImage: 'url()'} : {backgroundImage: `url(${photo})`};
     return (
       <div className="fill__field-container field__image-container">
       <label htmlFor="add__img" className="fill__label">imagen de perfil *</label>
@@ -23,13 +23,12 @@ class ImageLoad extends React.Component {
           ref={imageLoad}
           onChange={(event) => {getImage(event)}}
         />
-        <div className="fill__preview-little js__profile-preview" style={{backgroundImage: `url(${photo})`}}>
+        <div className="fill__preview-little js__profile-preview" style={conditionStyle}>
           <img className="img__user" src={photo} alt="User-profile-pic" />
         </div>
       </div>
       </div>
-      )
-    }
+    )
   }
 
 

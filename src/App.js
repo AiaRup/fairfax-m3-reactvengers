@@ -17,8 +17,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.imageLoad = React.createRef();
-    this.reader = '';
-
     this.state = {
       userProfile: {
         name: '',
@@ -30,6 +28,7 @@ class App extends Component {
         photo: imageUrlBase,
         palette: ''
       },
+      isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
     this.updateUser = this.updateUser.bind(this);
@@ -76,21 +75,21 @@ class App extends Component {
 
   getImage(event) {
     const myFile = event.currentTarget.files[0];
-    this.reader = new FileReader();
-    this.reader.readAsDataURL(myFile);
-    this.reader.onload = (event) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(myFile);
+    reader.onload = () => {
       const newUser = {...this.state.userProfile}
-      newUser.photo = this.reader.result;
-      this.setState({ userProfile: newUser });
+      newUser.photo = reader.result;
+      this.setState({ userProfile: newUser, isDefaultImage: false });
     };
   }
 
   render() {
-    const { userProfile, iconsStateArr } = this.state;
+    const { userProfile, iconsStateArr, isDefaultImage } = this.state;
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} />
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage}/>
     );
   }
 }

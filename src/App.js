@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
+import {imageUrlBase} from './data/defaultImage';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -15,6 +16,7 @@ import './stylesheets/App.scss';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.imageLoad = React.createRef();
     this.state = {
       userProfile: {
         name: '',
@@ -23,14 +25,17 @@ class App extends Component {
         phone: '',
         linkedin: '',
         github: '',
-        photo: '',
+        photo: imageUrlBase,
         palette: 1
       },
+      isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
+    this.clickLoadImage = this.clickLoadImage.bind(this);
+    this.getImage = this.getImage.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
   }
 
@@ -65,6 +70,19 @@ class App extends Component {
     this.setState({userProfile: newUser});
   }
 
+  clickLoadImage () {
+    this.imageLoad.current.click();
+  }
+
+  getImage(event) {
+    const myFile = event.currentTarget.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(myFile);
+    reader.onload = () => {
+      const newUser = {...this.state.userProfile}
+      newUser.photo = reader.result;
+      this.setState({ userProfile: newUser, isDefaultImage: false });
+    };}
   resetInfo(){
     const userReset ={
       name: '',
@@ -84,11 +102,11 @@ class App extends Component {
   }
 
   render() {
-    const { userProfile, iconsStateArr } = this.state;
+    const { userProfile, iconsStateArr, isDefaultImage } = this.state;
 
     return (
       // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} resetInfo={this.resetInfo}/> 
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo}/>
     );
   }
 }

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 // import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import './stylesheets/App.scss';
-import {imageUrlBase} from './data/defaultImage';
+import { imageUrlBase } from './data/defaultImage.js';
+import { infoLoading } from './data/appData.js';
 
 // const INFOLANDING = {
 //   title: 'Crea tu tarjeta de visita',
@@ -64,13 +65,13 @@ class App extends Component {
     }
   }
 
-  changeColorPalette (id){
-    const newUser = {...this.state.userProfile};
+  changeColorPalette(id) {
+    const newUser = { ...this.state.userProfile };
     newUser.palette = id;
-    this.setState({userProfile: newUser});
+    this.setState({ userProfile: newUser });
   }
 
-  clickLoadImage () {
+  clickLoadImage() {
     this.imageLoad.current.click();
   }
 
@@ -79,12 +80,13 @@ class App extends Component {
     const reader = new FileReader();
     reader.readAsDataURL(myFile);
     reader.onload = () => {
-      const newUser = {...this.state.userProfile}
+      const newUser = { ...this.state.userProfile };
       newUser.photo = reader.result;
       this.setState({ userProfile: newUser, isDefaultImage: false });
-    };}
-  resetInfo(){
-    const userReset ={
+    };
+  }
+  resetInfo() {
+    const userReset = {
       name: '',
       job: '',
       email: '',
@@ -93,20 +95,20 @@ class App extends Component {
       github: '',
       photo: '',
       palette: 1
-    }
+    };
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile : userReset });
+    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset });
   }
 
   render() {
     const { userProfile, iconsStateArr, isDefaultImage } = this.state;
 
     return (
-      // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo}/>
+      // <Home teamName={infoLoading.teamName} btnText={infoLoading.btnText} iconsArr={infoLoading.iconsArr} description={infoLoading.description} title={infoLoading.title} />
+      <Card user={userProfile} updateUser={this.updateUser} iconsStateArr={iconsStateArr} selectPalette={this.changeColorPalette} imageLoad={this.imageLoad} clickLoadImage={this.clickLoadImage} getImage={this.getImage} isDefaultImage={isDefaultImage} resetInfo={this.resetInfo} />
     );
   }
 }

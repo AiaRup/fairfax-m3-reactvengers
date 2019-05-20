@@ -115,7 +115,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' render={()=>(<Home teamName={infoLoading.teamName} btnText={infoLoading.btnText} iconsArr={infoLoading.iconsArr} description={infoLoading.description} title={infoLoading.title} />)}/>
-        <Route path='/Card' render = {()=> (<Card
+        <Route path='/card' render = {()=> (<Card
         user={userProfile}
         updateUser={this.updateUser}
         iconsStateArr={iconsStateArr}

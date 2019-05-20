@@ -40,6 +40,7 @@ class App extends Component {
     this.getImage = this.getImage.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
     this.fetchNewResponse = this.fetchNewResponse.bind(this);
+    this.saveData = this.saveData.bind(this);
   }
 
   updateUser(value, id) {
@@ -50,6 +51,7 @@ class App extends Component {
         return { userProfile: newUser };
       },
       () => {
+        this.saveData();
         this.changeIconState(value, id);
       }
     );
@@ -114,7 +116,9 @@ class App extends Component {
     });
   }
 
-  
+  saveData() {
+    localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
+  }
 
   render() {
     const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;

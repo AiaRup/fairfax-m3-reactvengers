@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Main = props => {
   // Destructuring the props, to don't reuse props.title, props.btnText...
@@ -27,11 +28,7 @@ const Main = props => {
             </li>
           </ul>
         </div>
-        <div className="main__landing-start">
-          <a href="createCard.html" className="main__landing-link">
-            {btnText}
-          </a>
-        </div>
+        <Link className="main__landing-start" to="/card">{btnText}</Link>
       </div>
     </main>
   );

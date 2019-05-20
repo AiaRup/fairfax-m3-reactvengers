@@ -1,19 +1,14 @@
 /* Destructuring del objeto React, que tiene diferentes elementos, como Component */
 import React, { Component } from 'react';
-// import Home from './components/Home/Home';
+import Home from './components/Home/Home';
 import Card from './components/Card/Card';
 import { fetchResponse } from './services/ResponseService';
 import './stylesheets/App.scss';
 import { imageUrlBase } from './data/defaultImage.js';
-// import { infoLoading } from './data/appData.js';
+import { infoLanding } from './data/appData.js';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-// const INFOLANDING = {
-//   title: 'Crea tu tarjeta de visita',
-//   description: 'Crea mejores contactos profesionales de forma fácil y cómoda',
-//   iconsArr: ['Diseña', 'Rellena', 'Comparte'],
-//   btnText: 'comenzar',
-//   teamName: 'ReactVengers'
-// };
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -118,20 +113,29 @@ class App extends Component {
     const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;
 
     return (
-      // <Home teamName={INFOLANDING.teamName} btnText={INFOLANDING.btnText} iconsArr={INFOLANDING.iconsArr} description={INFOLANDING.description} title={INFOLANDING.title} />
-      <Card
-        user={userProfile}
-        updateUser={this.updateUser}
-        iconsStateArr={iconsStateArr}
-        selectPalette={this.changeColorPalette}
-        imageLoad={this.imageLoad}
-        clickLoadImage={this.clickLoadImage}
-        getImage={this.getImage}
-        isDefaultImage={isDefaultImage}
-        resetInfo={this.resetInfo}
-        cardData={cardData}
-        fetchNewResponse={this.fetchNewResponse}
-      />
+      <Switch>
+        <Route exact path='/home' render={()=>(<Home
+          teamName={infoLanding.teamName}
+          btnText={infoLanding.btnText}
+          iconsArr={infoLanding.iconsArr}
+          description={infoLanding.description}
+          title={infoLanding.title} />)}
+        />
+        <Route exact path='/card' render = {()=> (<Card
+          user={userProfile}
+          updateUser={this.updateUser}
+          iconsStateArr={iconsStateArr}
+          selectPalette={this.changeColorPalette}
+          imageLoad={this.imageLoad}
+          clickLoadImage={this.clickLoadImage}
+          getImage={this.getImage}
+          isDefaultImage={isDefaultImage}
+          resetInfo={this.resetInfo}
+          cardData={cardData}
+          fetchNewResponse={this.fetchNewResponse}/>)}
+        />
+        <Redirect from='/' to='/home' />
+      </Switch>
     );
   }
 }

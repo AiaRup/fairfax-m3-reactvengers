@@ -114,6 +114,8 @@ class App extends Component {
     });
   }
 
+  
+
   render() {
     const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;
 

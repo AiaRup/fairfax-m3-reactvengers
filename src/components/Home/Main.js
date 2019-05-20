@@ -28,9 +28,7 @@ const Main = props => {
             </li>
           </ul>
         </div>
-        <div className="main__landing-start">
-        <Link className="main__landing-link" to="/card">{btnText}</Link>
-        </div>
+        <Link className="main__landing-start" to="/card">{btnText}</Link>
       </div>
     </main>
   );

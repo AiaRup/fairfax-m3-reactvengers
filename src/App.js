@@ -5,8 +5,8 @@ import Card from './components/Card/Card';
 import { fetchResponse } from './services/ResponseService';
 import './stylesheets/App.scss';
 import { imageUrlBase } from './data/defaultImage.js';
-import { infoLoading } from './data/appData.js';
-import { Route, Switch } from 'react-router-dom';
+import { infoLanding } from './data/appData.js';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 
 class App extends Component {
@@ -114,20 +114,27 @@ class App extends Component {
 
     return (
       <Switch>
-        <Route exact path='/' render={()=>(<Home teamName={infoLoading.teamName} btnText={infoLoading.btnText} iconsArr={infoLoading.iconsArr} description={infoLoading.description} title={infoLoading.title} />)}/>
-        <Route path='/card' render = {()=> (<Card
-        user={userProfile}
-        updateUser={this.updateUser}
-        iconsStateArr={iconsStateArr}
-        selectPalette={this.changeColorPalette}
-        imageLoad={this.imageLoad}
-        clickLoadImage={this.clickLoadImage}
-        getImage={this.getImage}
-        isDefaultImage={isDefaultImage}
-        resetInfo={this.resetInfo}
-        cardData={cardData}
-        fetchNewResponse={this.fetchNewResponse}
-      />)}/>
+        <Route exact path='/home' render={()=>(<Home
+          teamName={infoLanding.teamName}
+          btnText={infoLanding.btnText}
+          iconsArr={infoLanding.iconsArr}
+          description={infoLanding.description}
+          title={infoLanding.title} />)}
+        />
+        <Route exact path='/card' render = {()=> (<Card
+          user={userProfile}
+          updateUser={this.updateUser}
+          iconsStateArr={iconsStateArr}
+          selectPalette={this.changeColorPalette}
+          imageLoad={this.imageLoad}
+          clickLoadImage={this.clickLoadImage}
+          getImage={this.getImage}
+          isDefaultImage={isDefaultImage}
+          resetInfo={this.resetInfo}
+          cardData={cardData}
+          fetchNewResponse={this.fetchNewResponse}/>)}
+        />
+        <Redirect from='/' to='/home' />
       </Switch>
     );
   }

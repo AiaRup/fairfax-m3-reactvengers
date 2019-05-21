@@ -15,19 +15,22 @@ class App extends Component {
     this.imageLoad = React.createRef();
     this.state = {
       userProfile: {
-        name: '',
-        job: '',
-        email: '',
-        phone: '',
-        linkedin: '',
-        github: '',
-        photo: imageUrlBase,
         palette: 1
       },
       cardData: '',
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
+    this.defaultUser = {
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+      photo: imageUrlBase,
+      palette: 1
+    }
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
@@ -35,6 +38,8 @@ class App extends Component {
     this.getImage = this.getImage.bind(this);
     this.resetInfo = this.resetInfo.bind(this);
     this.fetchNewResponse = this.fetchNewResponse.bind(this);
+    this.saveData = this.saveData.bind(this);
+    this.getIconState = this.getIconState.bind(this);
   }
 
   updateUser(value, id) {
@@ -45,6 +50,7 @@ class App extends Component {
         return { userProfile: newUser };
       },
       () => {
+        this.saveData();
         this.changeIconState(value, id);
       }
     );
@@ -65,7 +71,7 @@ class App extends Component {
   changeColorPalette(id) {
     const newUser = { ...this.state.userProfile };
     newUser.palette = id;
-    this.setState({ userProfile: newUser });
+    this.setState({ userProfile: newUser }, this.saveData);
   }
 
   clickLoadImage() {
@@ -80,24 +86,16 @@ class App extends Component {
       const newUser = { ...this.state.userProfile };
       newUser.photo = reader.result;
       this.setState({ userProfile: newUser, isDefaultImage: false });
+      this.saveData();
     };
   }
   resetInfo() {
-    const userReset = {
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      photo: imageUrlBase,
-      palette: 1
-    };
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset, isDefaultImage: true });
+    this.setState({ iconsStateArr: newIconsArr, userProfile: this.defaultUser, isDefaultImage: true });
+    localStorage.removeItem('userProfile');
   }
 
   fetchNewResponse(event) {
@@ -107,6 +105,33 @@ class App extends Component {
         cardData: data.cardURL
       });
     });
+  }
+
+  saveData() {
+    localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    const localUser = JSON.parse(localStorage.getItem('userProfile'));
+    if (localUser !== null) {
+      this.setState( {
+          userProfile : localUser, isDefaultImage : localUser.photo ? false : true 
+        })
+        this.getIconState(localUser);
+    } else {
+      this.setState({userProfile : this.defaultUser})
+    }
+  }
+
+  getIconState(localUser) {
+    const newIconsArr = this.state.iconsStateArr.map(iconChuChu => {
+      return {...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false};
+    })
+    this.setState({iconsStateArr : newIconsArr});
   }
 
   render() {

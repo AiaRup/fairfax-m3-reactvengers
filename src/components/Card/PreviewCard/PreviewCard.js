@@ -10,7 +10,6 @@ const PreviewCard = props => {
     resetInfo
   } = props;
   const iconsData = [email, phone, linkedin, github];
-
   return (
     <section className="main__preview">
       <div className={`preview__card theme${palette || 1}`}>

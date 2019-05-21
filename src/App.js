@@ -19,20 +19,21 @@ class App extends Component {
     super(props);
     this.imageLoad = React.createRef();
     this.state = {
-      userProfile: {
-        name: '',
-        job: '',
-        email: '',
-        phone: '',
-        linkedin: '',
-        github: '',
-        photo: imageUrlBase,
-        palette: 1
-      },
+      userProfile: {},
       cardData: '',
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
     };
+    this.defaultUser = {
+      name: '',
+      job: '',
+      email: '',
+      phone: '',
+      linkedin: '',
+      github: '',
+      photo: imageUrlBase,
+      palette: 1
+    }
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
@@ -119,6 +120,22 @@ class App extends Component {
 
   saveData() {
     localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    const localUser = JSON.parse(localStorage.getItem('userProfile'));
+    console.log(localUser);
+    if (localUser !== null) {
+      this.setState( {
+          userProfile : localUser 
+        })
+    } else {
+      this.setState({userProfile : this.defaultUser})
+    }
   }
 
   render() {

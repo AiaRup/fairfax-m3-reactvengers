@@ -2,20 +2,22 @@ import React from 'react';
 
 const Twitter = props => {
   return (
-    <div className="share__hidden">
+    <React.Fragment>
       {props.cardData !== '' ? (
-        <div>
-          <p className="share__text">La tarjeta ha sido creada:</p>
-          <div className="share__link-container">{props.cardData}</div>
-          <a href={props.cardData} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-twitter twitter-icon" />
-            Compartir en twitter
-          </a>
+        <div className="share__hidden">
+          <div>
+            <p className="share__text">La tarjeta ha sido creada:</p>
+            <div className="share__link-container">{props.cardData}</div>
+            <a href={props.cardData} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer">
+              <i className="fab fa-twitter twitter-icon" />
+              Compartir en twitter
+            </a>
+          </div>
         </div>
       ) : (
         ''
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

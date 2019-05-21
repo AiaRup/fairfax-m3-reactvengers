@@ -8,7 +8,7 @@ const Twitter = props => {
           <div>
             <p className="share__text">La tarjeta ha sido creada:</p>
             <div className="share__link-container">
-              <a href={props.cardData} class="share__link" target="_blank" rel="noopener noreferrer">
+              <a href={props.cardData} className="share__link" target="_blank" rel="noopener noreferrer">
                 {props.cardData}
               </a>
             </div>

@@ -8,7 +8,6 @@ import { imageUrlBase } from './data/defaultImage.js';
 import { infoLanding } from './data/appData.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,8 @@ class App extends Component {
       },
       cardData: '',
       isDefaultImage: true,
-      iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
+      iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }],
+      isLoading: false
     };
     this.defaultUser = {
       name: '',
@@ -30,7 +30,7 @@ class App extends Component {
       github: '',
       photo: imageUrlBase,
       palette: 1
-    }
+    };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
@@ -100,11 +100,18 @@ class App extends Component {
 
   fetchNewResponse(event) {
     event.preventDefault();
-    fetchResponse(this.state.userProfile).then(data => {
-      this.setState({
-        cardData: data.cardURL
+    this.setState({ isLoading: true });
+    fetchResponse(this.state.userProfile)
+      .then(data => {
+        this.setState({
+          cardData: data.cardURL,
+          isLoading: false
+        });
+      })
+      .catch(error => {
+        console.log(`Error on fetch: ${error}`);
+        this.setState({ isLoading: false });
       });
-    });
   }
 
   saveData() {
@@ -118,48 +125,49 @@ class App extends Component {
   getData() {
     const localUser = JSON.parse(localStorage.getItem('userProfile'));
     if (localUser !== null) {
-      this.setState( {
-          userProfile : localUser, isDefaultImage : localUser.photo ? false : true 
-        })
-        this.getIconState(localUser);
+      this.setState({
+        userProfile: localUser,
+        isDefaultImage: localUser.photo ? false : true
+      });
+      this.getIconState(localUser);
     } else {
-      this.setState({userProfile : this.defaultUser})
+      this.setState({ userProfile: this.defaultUser });
     }
   }
 
   getIconState(localUser) {
     const newIconsArr = this.state.iconsStateArr.map(iconChuChu => {
-      return {...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false};
-    })
-    this.setState({iconsStateArr : newIconsArr});
+      return { ...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false };
+    });
+    this.setState({ iconsStateArr: newIconsArr });
   }
 
   render() {
-    const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;
-
+    const { userProfile, iconsStateArr, isDefaultImage, cardData, isLoading } = this.state;
     return (
       <Switch>
-        <Route exact path='/home' render={()=>(<Home
-          teamName={infoLanding.teamName}
-          btnText={infoLanding.btnText}
-          iconsArr={infoLanding.iconsArr}
-          description={infoLanding.description}
-          title={infoLanding.title} />)}
+        <Route exact path="/home" render={() => <Home teamName={infoLanding.teamName} btnText={infoLanding.btnText} iconsArr={infoLanding.iconsArr} description={infoLanding.description} title={infoLanding.title} />} />
+        <Route
+          exact
+          path="/card"
+          render={() => (
+            <Card
+              user={userProfile}
+              updateUser={this.updateUser}
+              iconsStateArr={iconsStateArr}
+              selectPalette={this.changeColorPalette}
+              imageLoad={this.imageLoad}
+              clickLoadImage={this.clickLoadImage}
+              getImage={this.getImage}
+              isDefaultImage={isDefaultImage}
+              resetInfo={this.resetInfo}
+              cardData={cardData}
+              fetchNewResponse={this.fetchNewResponse}
+              isLoading={isLoading}
+            />
+          )}
         />
-        <Route exact path='/card' render = {()=> (<Card
-          user={userProfile}
-          updateUser={this.updateUser}
-          iconsStateArr={iconsStateArr}
-          selectPalette={this.changeColorPalette}
-          imageLoad={this.imageLoad}
-          clickLoadImage={this.clickLoadImage}
-          getImage={this.getImage}
-          isDefaultImage={isDefaultImage}
-          resetInfo={this.resetInfo}
-          cardData={cardData}
-          fetchNewResponse={this.fetchNewResponse}/>)}
-        />
-        <Redirect from='/' to='/home' />
+        <Redirect from="/" to="/home" />
       </Switch>
     );
   }

@@ -28,7 +28,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { updateUser, selectPalette, imageLoad, clickLoadImage, getImage, user, isDefaultImage, cardData, fetchNewResponse } = this.props;
+    const { updateUser, selectPalette, imageLoad, clickLoadImage, getImage, user, isDefaultImage, cardData, fetchNewResponse, isLoading } = this.props;
     return (
       <form className="main__settings" action="" method="POST">
         <Collapsible titleInfo={titlesArr[0]} collapsibleObject={this.state.collapsibleArr[0]} fieldsetClass="design__main" legendText="diseña" changeCollapsible={this.changeCollapsible}>
@@ -38,7 +38,7 @@ class Form extends React.Component {
           <Fill updateUser={updateUser} imageLoad={imageLoad} clickLoadImage={clickLoadImage} getImage={getImage} user={user} isDefaultImage={isDefaultImage} />
         </Collapsible>
         <Collapsible titleInfo={titlesArr[2]} collapsibleObject={this.state.collapsibleArr[2]} fieldsetClass="share__main" legendText="comparte" changeCollapsible={this.changeCollapsible}>
-          <Share cardData={cardData} fetchNewResponse={fetchNewResponse} />
+          <Share cardData={cardData} fetchNewResponse={fetchNewResponse} isLoading={isLoading}/>
         </Collapsible>
       </form>
     );

@@ -4,13 +4,13 @@ import Form from './Form';
 import PropTypes from 'prop-types';
 
 const Main = props => {
-  const { user, updateUser, iconsStateArr, selectPalette, resetInfo, imageLoad, clickLoadImage, getImage, isDefaultImage, cardData, fetchNewResponse } = props;
+  const { user, updateUser, iconsStateArr, selectPalette, resetInfo, imageLoad, clickLoadImage, getImage, isDefaultImage, cardData, fetchNewResponse, isLoading } = props;
 
   return (
     <main className="page__main-card">
       <div className="wrapper">
         <PreviewCard user={user} iconsStateArr={iconsStateArr} resetInfo={resetInfo} />
-        <Form updateUser={updateUser} selectPalette={selectPalette} imageLoad={imageLoad} clickLoadImage={clickLoadImage} getImage={getImage} user={user} isDefaultImage={isDefaultImage} cardData={cardData} fetchNewResponse={fetchNewResponse} />
+        <Form updateUser={updateUser} selectPalette={selectPalette} imageLoad={imageLoad} clickLoadImage={clickLoadImage} getImage={getImage} user={user} isDefaultImage={isDefaultImage} cardData={cardData} fetchNewResponse={fetchNewResponse} isLoading={isLoading} />
       </div>
     </main>
   );

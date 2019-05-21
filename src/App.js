@@ -119,7 +119,6 @@ class App extends Component {
 
   getData() {
     const localUser = JSON.parse(localStorage.getItem('userProfile'));
-    console.log(localUser);
     if (localUser !== null) {
       this.setState( {
           userProfile : localUser 

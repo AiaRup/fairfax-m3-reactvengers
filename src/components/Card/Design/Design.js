@@ -19,7 +19,7 @@ const Design = props => {
 
 Design.propTypes = {
   selectPalette: PropTypes.func.isRequired,
-  userPalette: PropTypes.number.isRequired
+  userPalette: PropTypes.number
 };
 
 export default Design;

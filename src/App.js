@@ -19,7 +19,9 @@ class App extends Component {
     super(props);
     this.imageLoad = React.createRef();
     this.state = {
-      userProfile: {},
+      userProfile: {
+        palette: 1
+      },
       cardData: '',
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
@@ -42,6 +44,7 @@ class App extends Component {
     this.resetInfo = this.resetInfo.bind(this);
     this.fetchNewResponse = this.fetchNewResponse.bind(this);
     this.saveData = this.saveData.bind(this);
+    this.getIconState = this.getIconState.bind(this);
   }
 
   updateUser(value, id) {
@@ -73,7 +76,7 @@ class App extends Component {
   changeColorPalette(id) {
     const newUser = { ...this.state.userProfile };
     newUser.palette = id;
-    this.setState({ userProfile: newUser });
+    this.setState({ userProfile: newUser }, this.saveData);
   }
 
   clickLoadImage() {
@@ -121,11 +124,19 @@ class App extends Component {
     const localUser = JSON.parse(localStorage.getItem('userProfile'));
     if (localUser !== null) {
       this.setState( {
-          userProfile : localUser 
+          userProfile : localUser, isDefaultImage : localUser.photo ? false : true 
         })
+        this.getIconState(localUser);
     } else {
       this.setState({userProfile : this.defaultUser})
     }
+  }
+
+  getIconState(localUser) {
+    const newIconsArr = this.state.iconsStateArr.map(iconChuChu => {
+      return {...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false};
+    })
+    this.setState({iconsStateArr : newIconsArr});
   }
 
   render() {

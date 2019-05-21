@@ -1,4 +1,4 @@
-const infoLoading = {
+const infoLanding = {
   title: 'Crea tu tarjeta de visita',
   description: 'Crea mejores contactos profesionales de forma fácil y cómoda',
   iconsArr: ['Diseña', 'Rellena', 'Comparte'],
@@ -6,7 +6,7 @@ const infoLoading = {
   teamName: 'ReactVengers'
 };
 
-export { infoLoading };
+export { infoLanding };
 
 const arrayPalette = [
   {

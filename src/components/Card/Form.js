@@ -29,7 +29,6 @@ class Form extends React.Component {
 
   render() {
     const { updateUser, selectPalette, imageLoad, clickLoadImage, getImage, user, isDefaultImage, cardData, fetchNewResponse } = this.props;
-
     return (
       <form className="main__settings" action="" method="POST">
         <Collapsible titleInfo={titlesArr[0]} collapsibleObject={this.state.collapsibleArr[0]} fieldsetClass="design__main" legendText="diseña" changeCollapsible={this.changeCollapsible}>

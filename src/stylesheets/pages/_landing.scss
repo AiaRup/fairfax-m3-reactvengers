@@ -98,6 +98,7 @@
 }
 
 .main__landing-start {
+  display: block;
   width: rem(130);
   background-color: $color-dBlue;
   font-family: $openSans;
@@ -107,6 +108,8 @@
   border-radius: rem(21);
   padding: rem(10) rem(20);
   margin: rem(38) auto 0;
+  color: $color-white;
+  text-decoration: none;
   @include mq($bp_tablet) {
     margin-top: rem(100);
   }
@@ -114,10 +117,5 @@
     background-color: $color-orange;
     transition: 0.40s ease-in-out;
     }
-}
-
-.main__landing-link {
-  color: $color-white;
-  text-decoration: none;
 }
 

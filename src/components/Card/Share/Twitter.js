@@ -7,7 +7,11 @@ const Twitter = props => {
         <div className="share__hidden">
           <div>
             <p className="share__text">La tarjeta ha sido creada:</p>
-            <div className="share__link-container">{props.cardData}</div>
+            <div className="share__link-container">
+              <a href={props.cardData} class="share__link" target="_blank" rel="noopener noreferrer">
+                {props.cardData}
+              </a>
+            </div>
             <a href={props.cardData} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-twitter twitter-icon" />
               Compartir en twitter

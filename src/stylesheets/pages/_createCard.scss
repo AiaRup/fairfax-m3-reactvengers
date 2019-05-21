@@ -49,14 +49,16 @@
   display: none;
 }
 @keyframes spin {
-  from {transform:rotate(0deg);
-  } to {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(180deg);
   }
 }
 .fieldset__active {
   .arrow {
-    animation: spin ease .5s;
+    animation: spin ease 0.5s;
     transform: rotate(180deg);
   }
   .section__collapse {

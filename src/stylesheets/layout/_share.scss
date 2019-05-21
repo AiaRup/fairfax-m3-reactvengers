@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.share__main.form__fieldset {
+  border-bottom: rem(1) solid $color-border;
+}
+
 .share__title-wrapper {
   @include titleContainer;
 }
@@ -45,6 +49,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 5px;
 }
 
 .share__button-create {
@@ -100,7 +105,6 @@
 
 .share__hidden {
   border-top: rem(1) solid $color-border;
-  border-bottom: rem(1) solid $color-border;
   padding: rem(20) rem(0) rem(30) rem(0);
   display: flex;
   flex-direction: column;
@@ -139,6 +143,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px auto 0;
   &:hover {
     transition: transform 0.5s ease;
     transform: scale(1.05);
@@ -147,9 +152,9 @@
     margin-right: rem(10);
   }
 }
-.loading{
+.loading {
   text-align: center;
 }
-.loading__img{
+.loading__img {
   height: 40px;
 }

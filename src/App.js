@@ -92,21 +92,12 @@ class App extends Component {
     };
   }
   resetInfo() {
-    const userReset = {
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      photo: imageUrlBase,
-      palette: 1
-    };
     const newIconsArr = this.state.iconsStateArr.map(icon => {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile: userReset, isDefaultImage: true });
+    this.setState({ iconsStateArr: newIconsArr, userProfile: this.defaultUser, isDefaultImage: true });
+    localStorage.removeItem('userProfile');
   }
 
   fetchNewResponse(event) {

@@ -28,7 +28,7 @@ class App extends Component {
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }],
       isLoading: false,
       inputErrorArr: [],
-      isError: false
+      isError: false,
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
@@ -111,6 +111,7 @@ class App extends Component {
         palette: 1
       },
       isDefaultImage: true,
+      isError: false
     });
     localStorage.removeItem('userProfile');
   }

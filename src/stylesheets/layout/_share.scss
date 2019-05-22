@@ -50,6 +50,9 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-top: 5px;
+  &:hover {
+    color: $color-blue;
+  }
 }
 
 .share__button-create {
@@ -75,22 +78,10 @@
   align-content: center;
   align-items: center;
   cursor: pointer;
-  &:visited {
-    background-color: $color-button;
-  }
   &:hover {
-    top: 1px;
-    box-shadow: 0 5px $color-dOrange;
-    position: relative;
+    box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.5);
   }
-  &:active {
-    background-color: $color-button;
-    top: 6px;
-    outline: none;
-    box-shadow: 0 0px $color-dOrange;
-    border: 0;
-    position: relative;
-  }
+
   .card-icon {
     margin-right: rem(10);
   }

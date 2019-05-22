@@ -1,6 +1,6 @@
 .container__modal {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   top: 0;
@@ -21,39 +21,27 @@
   transform: translate(-50%, -50%);
 }
 
-.fa-times {
-  color: red;
-  // margin-left: auto;
-  display: block;
+.error__close {
   text-align: right;
-  &:hover {
-    transform: scale(1.5);
+  .fa-times {
+    color: red;
+    &:hover {
+      transform: scale(1.5);
+      cursor: pointer;
+    }
   }
 }
 
 .modal__content {
   width: 100%;
   text-align: center;
-  padding: 0 40px;
+  // padding: 0 40px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.modal__content__buttons button {
-  padding: 15px;
-  color: #fff;
-  background-color: #000;
-  border: none;
-  border-radius: 5px;
-  margin: 10px;
-  width: 150px;
-  cursor: pointer;
-}
-
-.modal__content__buttons .subscribe {
-  color: #000;
-  background-color: #fff;
-  border: 2px solid black;
+.error__list-modal {
+  list-style-type: decimal;
 }

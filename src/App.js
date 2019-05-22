@@ -40,6 +40,7 @@ class App extends Component {
     this.saveData = this.saveData.bind(this);
     this.getIconState = this.getIconState.bind(this);
     this.checkUserData = this.checkUserData.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -182,6 +183,11 @@ class App extends Component {
     this.setState({ iconsStateArr: newIconsArr });
   }
 
+  closeModal() {
+    this.setState({ isError: false });
+
+  }
+
   render() {
     const { userProfile, iconsStateArr, isDefaultImage, cardData, isLoading, isError, inputErrorArr } = this.state;
     return (
@@ -206,6 +212,7 @@ class App extends Component {
               isLoading={isLoading}
               isError={isError}
               inputErrorArr={inputErrorArr}
+              closeModal={this.closeModal}
             />
           )}
         />

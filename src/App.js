@@ -14,22 +14,21 @@ class App extends Component {
     this.imageLoad = React.createRef();
     this.state = {
       userProfile: {
+        name: '',
+        job: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        photo: imageUrlBase,
         palette: 1
       },
       cardData: '',
       isDefaultImage: true,
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }],
-      isLoading: false
-    };
-    this.defaultUser = {
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      photo: imageUrlBase,
-      palette: 1
+      isLoading: false,
+      inputErrorArr: [],
+      isError: false
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
@@ -40,6 +39,11 @@ class App extends Component {
     this.fetchNewResponse = this.fetchNewResponse.bind(this);
     this.saveData = this.saveData.bind(this);
     this.getIconState = this.getIconState.bind(this);
+    this.checkUserData = this.checkUserData.bind(this);
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   updateUser(value, id) {
@@ -94,32 +98,69 @@ class App extends Component {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile: this.defaultUser, isDefaultImage: true });
+    this.setState({
+      iconsStateArr: newIconsArr,
+      userProfile: {
+        name: '',
+        job: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        photo: imageUrlBase,
+        palette: 1
+      },
+      isDefaultImage: true,
+    });
     localStorage.removeItem('userProfile');
   }
 
   fetchNewResponse(event) {
     event.preventDefault();
-    this.setState({ isLoading: true });
-    fetchResponse(this.state.userProfile)
-      .then(data => {
-        this.setState({
-          cardData: data.cardURL,
-          isLoading: false
+    this.setState({ isError: false });
+    const valid = this.checkUserData();
+    if (valid) {
+      this.setState({ isLoading: true });
+      fetchResponse(this.state.userProfile)
+        .then(data => {
+          this.setState({
+            cardData: data.cardURL,
+            isLoading: false
+          });
+        })
+        .catch(error => {
+          console.log(`Error on fetch: ${error}`);
+          this.setState({ isLoading: false });
         });
-      })
-      .catch(error => {
-        console.log(`Error on fetch: ${error}`);
-        this.setState({ isLoading: false });
-      });
+    } else {
+      this.setState({ isError: true });
+    }
   }
+
+  checkUserData() {
+    const tempArr = [];
+    for (let property in this.state.userProfile) {
+      const currentProp = this.state.userProfile[property];
+      if (currentProp === '' && property !== 'phone' && property !== 'photo') {
+        tempArr.push(property);
+        console.log(tempArr);
+    }
+    if (property === 'photo' && this.state.userProfile[property] === imageUrlBase) {
+      tempArr.push(property);
+    }
+  }
+    if (tempArr.length) {
+      this.setState({inputErrorArr : tempArr})
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
 
   saveData() {
     localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
-  }
-
-  componentDidMount() {
-    this.getData();
   }
 
   getData() {
@@ -130,8 +171,6 @@ class App extends Component {
         isDefaultImage: localUser.photo ? false : true
       });
       this.getIconState(localUser);
-    } else {
-      this.setState({ userProfile: this.defaultUser });
     }
   }
 
@@ -143,7 +182,7 @@ class App extends Component {
   }
 
   render() {
-    const { userProfile, iconsStateArr, isDefaultImage, cardData, isLoading } = this.state;
+    const { userProfile, iconsStateArr, isDefaultImage, cardData, isLoading, isError, inputErrorArr } = this.state;
     return (
       <Switch>
         <Route exact path="/home" render={() => <Home teamName={infoLanding.teamName} btnText={infoLanding.btnText} iconsArr={infoLanding.iconsArr} description={infoLanding.description} title={infoLanding.title} />} />
@@ -164,6 +203,8 @@ class App extends Component {
               cardData={cardData}
               fetchNewResponse={this.fetchNewResponse}
               isLoading={isLoading}
+              isError={isError}
+              inputErrorArr={inputErrorArr}
             />
           )}
         />

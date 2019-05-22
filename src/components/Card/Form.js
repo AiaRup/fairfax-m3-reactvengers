@@ -27,14 +27,33 @@ class Form extends React.Component {
     this.setState({ collapsibleArr: newCollapsibleArr });
   }
 
+    openFillOnError() {
+      const newArr = this.state.collapsibleArr.map(collapsible => {
+        if (collapsible.id === 'fill') {
+          collapsible.isVisible = true;
+        } else {
+          collapsible.isVisible = false;
+        }
+        return collapsible;
+      })
+      this.setState({ collapsibleArr: newArr})
+    }
+
+componentWillReceiveProps(nextProps) {
+      if (nextProps.isError) {
+        this.openFillOnError();
+      }
+    }
+
   render() {
     const { updateUser, selectPalette, imageLoad, clickLoadImage, getImage, user, isDefaultImage, cardData, fetchNewResponse, isLoading, isError, inputErrorArr } = this.props;
+
     return (
       <form className="main__settings" action="" method="POST">
         <Collapsible titleInfo={titlesArr[0]} collapsibleObject={this.state.collapsibleArr[0]} fieldsetClass="design__main" legendText="diseña" changeCollapsible={this.changeCollapsible}>
           <Design selectPalette={selectPalette} userPalette={user.palette} />
         </Collapsible>
-        <Collapsible titleInfo={titlesArr[1]} collapsibleObject={this.state.collapsibleArr[1]} fieldsetClass="fill__container" legendText="rellena" changeCollapsible={this.changeCollapsible}>
+        <Collapsible titleInfo={titlesArr[1]} collapsibleObject={this.state.collapsibleArr[1]} fieldsetClass="fill__container" legendText="rellena" changeCollapsible={this.changeCollapsible} isError={isError}>
           <Fill updateUser={updateUser} imageLoad={imageLoad} clickLoadImage={clickLoadImage} getImage={getImage} user={user} isDefaultImage={isDefaultImage} inputErrorArr={inputErrorArr} />
         </Collapsible>
         <Collapsible titleInfo={titlesArr[2]} collapsibleObject={this.state.collapsibleArr[2]} fieldsetClass="share__main" legendText="comparte" changeCollapsible={this.changeCollapsible}>

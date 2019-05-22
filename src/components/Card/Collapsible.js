@@ -3,7 +3,7 @@ import TitleCollapsible from './TitleCollapsible';
 import PropTypes from 'prop-types';
 
 const Collapsible = props => {
-  let { fieldsetClass, titleInfo, children, legendText, collapsibleObject, changeCollapsible, isError } = props;
+  let { fieldsetClass, titleInfo, children, legendText, collapsibleObject, changeCollapsible } = props;
   fieldsetClass = collapsibleObject.isVisible ? `${fieldsetClass} fieldset__active` : fieldsetClass;
   return (
     <fieldset className={`form__fieldset ${fieldsetClass}`}>

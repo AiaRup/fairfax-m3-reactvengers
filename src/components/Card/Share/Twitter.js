@@ -12,7 +12,8 @@ const Twitter = props => {
                 {props.cardData}
               </a>
             </div>
-            <a href={props.cardData} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer">
+            <a href={`http://twitter.com/home?status=Check%20my%20awesome%20profile%20card%20⚛%20${props.cardData}`} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer">
+            {/* <a href={props.cardData} className="share__button-twitter twitter-share-button" target="_blank" rel="noopener noreferrer"> */}
               <i className="fab fa-twitter twitter-icon" />
               Compartir en twitter
             </a>
@@ -26,3 +27,4 @@ const Twitter = props => {
 };
 
 export default Twitter;
+

@@ -1,0 +1,47 @@
+.container__modal {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  width: 30vw;
+  min-width: 180px;
+  height: 30vh;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error__close {
+  text-align: right;
+  .fa-times {
+    color: red;
+    &:hover {
+      transform: scale(1.5);
+      cursor: pointer;
+    }
+  }
+}
+
+.modal__content {
+  width: 100%;
+  text-align: center;
+  // padding: 0 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error__list-modal {
+  list-style-type: decimal;
+}

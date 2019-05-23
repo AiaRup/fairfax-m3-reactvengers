@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ImageLoad = props => {
-  let { imageLoad, clickLoadImage, getImage, photo, isDefaultImage } = props;
+  let { imageLoad, clickLoadImage, getImage, photo, isDefaultImage, classError } = props;
   const conditionStyle = isDefaultImage ? { backgroundImage: 'url()' } : { backgroundImage: `url(${photo})` };
   return (
-    <div className="fill__field-container field__image-container">
+    <div className={`fill__field-container field__image-container ${classError}`}>
       <label htmlFor="add__img" className="fill__label">
         imagen de perfil *
       </label>

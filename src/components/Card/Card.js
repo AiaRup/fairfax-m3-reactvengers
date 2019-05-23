@@ -4,13 +4,16 @@ import Header from '../Home/Header';
 import Main from '../Card/Main';
 import Footer from '../Home/Footer';
 import PropTypes from 'prop-types';
+import Modal from './Modal';
 
 const Card = props => {
+  const {isError, closeModal, inputErrorArr} = props;
   return (
     <div className="page-card">
       <Header />
       <Main {...props} />
       <Footer />
+      {isError && <Modal  closeModal={closeModal} inputErrorArr={inputErrorArr} />}
     </div>
   );
 };

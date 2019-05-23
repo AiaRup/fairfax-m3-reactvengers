@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.share__main.form__fieldset {
+  border-bottom: rem(1) solid $color-border;
+}
+
 .share__title-wrapper {
   @include titleContainer;
 }
@@ -45,6 +49,10 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 5px;
+  &:hover {
+    color: $color-blue;
+  }
 }
 
 .share__button-create {
@@ -70,22 +78,10 @@
   align-content: center;
   align-items: center;
   cursor: pointer;
-  &:visited {
-    background-color: $color-button;
-  }
   &:hover {
-    top: 1px;
-    box-shadow: 0 5px $color-dOrange;
-    position: relative;
+    box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.5);
   }
-  &:active {
-    background-color: $color-button;
-    top: 6px;
-    outline: none;
-    box-shadow: 0 0px $color-dOrange;
-    border: 0;
-    position: relative;
-  }
+
   .card-icon {
     margin-right: rem(10);
   }
@@ -100,7 +96,6 @@
 
 .share__hidden {
   border-top: rem(1) solid $color-border;
-  border-bottom: rem(1) solid $color-border;
   padding: rem(20) rem(0) rem(30) rem(0);
   display: flex;
   flex-direction: column;
@@ -139,6 +134,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px auto 0;
   &:hover {
     transition: transform 0.5s ease;
     transform: scale(1.05);
@@ -147,9 +143,9 @@
     margin-right: rem(10);
   }
 }
-.loading{
+.loading {
   text-align: center;
 }
-.loading__img{
+.loading__img {
   height: 40px;
 }

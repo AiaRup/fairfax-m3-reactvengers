@@ -8,29 +8,28 @@ import { imageUrlBase } from './data/defaultImage.js';
 import { infoLanding } from './data/appData.js';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.imageLoad = React.createRef();
     this.state = {
       userProfile: {
+        name: '',
+        job: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        photo: imageUrlBase,
         palette: 1
       },
       cardData: '',
       isDefaultImage: true,
-      iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }]
+      iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }],
+      isLoading: false,
+      inputErrorArr: [],
+      isError: false,
     };
-    this.defaultUser = {
-      name: '',
-      job: '',
-      email: '',
-      phone: '',
-      linkedin: '',
-      github: '',
-      photo: imageUrlBase,
-      palette: 1
-    }
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
     this.changeColorPalette = this.changeColorPalette.bind(this);
@@ -40,6 +39,12 @@ class App extends Component {
     this.fetchNewResponse = this.fetchNewResponse.bind(this);
     this.saveData = this.saveData.bind(this);
     this.getIconState = this.getIconState.bind(this);
+    this.checkUserData = this.checkUserData.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   updateUser(value, id) {
@@ -94,72 +99,124 @@ class App extends Component {
       icon.isVisible = false;
       return icon;
     });
-    this.setState({ iconsStateArr: newIconsArr, userProfile: this.defaultUser, isDefaultImage: true });
+    this.setState({
+      iconsStateArr: newIconsArr,
+      userProfile: {
+        name: '',
+        job: '',
+        email: '',
+        phone: '',
+        linkedin: '',
+        github: '',
+        photo: imageUrlBase,
+        palette: 1
+      },
+      isDefaultImage: true,
+      isError: false
+    });
     localStorage.removeItem('userProfile');
   }
 
   fetchNewResponse(event) {
     event.preventDefault();
-    fetchResponse(this.state.userProfile).then(data => {
-      this.setState({
-        cardData: data.cardURL
-      });
-    });
+    this.setState({ isError: false });
+    const valid = this.checkUserData();
+    if (valid) {
+      this.setState({ isLoading: true });
+      fetchResponse(this.state.userProfile)
+        .then(data => {
+          this.setState({
+            cardData: data.cardURL,
+            isLoading: false
+          });
+        })
+        .catch(error => {
+          console.log(`Error on fetch: ${error}`);
+          this.setState({ isLoading: false });
+        });
+    } else {
+      this.setState({ isError: true });
+    }
   }
+
+  checkUserData() {
+    const tempArr = [];
+    for (let property in this.state.userProfile) {
+      const currentProp = this.state.userProfile[property];
+      if (currentProp === '' && property !== 'phone' && property !== 'photo') {
+        tempArr.push(property);
+        console.log(tempArr);
+    }
+    if (property === 'photo' && this.state.userProfile[property] === imageUrlBase) {
+      tempArr.push(property);
+    }
+  }
+    if (tempArr.length) {
+      this.setState({inputErrorArr : tempArr})
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
 
   saveData() {
     localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
   }
 
-  componentDidMount() {
-    this.getData();
-  }
-
   getData() {
     const localUser = JSON.parse(localStorage.getItem('userProfile'));
     if (localUser !== null) {
-      this.setState( {
-          userProfile : localUser, isDefaultImage : localUser.photo ? false : true 
-        })
-        this.getIconState(localUser);
-    } else {
-      this.setState({userProfile : this.defaultUser})
+      this.setState({
+        userProfile: localUser,
+        isDefaultImage: localUser.photo ? false : true
+      });
+      this.getIconState(localUser);
     }
   }
 
   getIconState(localUser) {
     const newIconsArr = this.state.iconsStateArr.map(iconChuChu => {
-      return {...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false};
-    })
-    this.setState({iconsStateArr : newIconsArr});
+      return { ...iconChuChu, isVisible: localUser[iconChuChu.id] ? true : false };
+    });
+    this.setState({ iconsStateArr: newIconsArr });
+  }
+
+  closeModal() {
+    this.setState({ isError: false });
+
   }
 
   render() {
-    const { userProfile, iconsStateArr, isDefaultImage, cardData } = this.state;
-
+    const { userProfile, iconsStateArr, isDefaultImage, cardData, isLoading, isError, inputErrorArr } = this.state;
     return (
       <Switch>
-        <Route exact path='/home' render={()=>(<Home
-          teamName={infoLanding.teamName}
-          btnText={infoLanding.btnText}
-          iconsArr={infoLanding.iconsArr}
-          description={infoLanding.description}
-          title={infoLanding.title} />)}
+        <Route exact path="/home" render={() => <Home teamName={infoLanding.teamName} btnText={infoLanding.btnText} iconsArr={infoLanding.iconsArr} description={infoLanding.description} title={infoLanding.title} />} />
+        <Route
+          exact
+          path="/card"
+          render={() => (
+            <Card
+              user={userProfile}
+              updateUser={this.updateUser}
+              iconsStateArr={iconsStateArr}
+              selectPalette={this.changeColorPalette}
+              imageLoad={this.imageLoad}
+              clickLoadImage={this.clickLoadImage}
+              getImage={this.getImage}
+              isDefaultImage={isDefaultImage}
+              resetInfo={this.resetInfo}
+              cardData={cardData}
+              fetchNewResponse={this.fetchNewResponse}
+              isLoading={isLoading}
+              isError={isError}
+              inputErrorArr={inputErrorArr}
+              closeModal={this.closeModal}
+            />
+          )}
         />
-        <Route exact path='/card' render = {()=> (<Card
-          user={userProfile}
-          updateUser={this.updateUser}
-          iconsStateArr={iconsStateArr}
-          selectPalette={this.changeColorPalette}
-          imageLoad={this.imageLoad}
-          clickLoadImage={this.clickLoadImage}
-          getImage={this.getImage}
-          isDefaultImage={isDefaultImage}
-          resetInfo={this.resetInfo}
-          cardData={cardData}
-          fetchNewResponse={this.fetchNewResponse}/>)}
-        />
-        <Redirect from='/' to='/home' />
+        <Redirect from="/" to="/home" />
       </Switch>
     );
   }

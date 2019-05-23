@@ -112,7 +112,8 @@ class App extends Component {
         palette: 1
       },
       isDefaultImage: true,
-      isError: false
+      isError: false,
+      inputErrorArr: []
     });
     localStorage.removeItem('userProfile');
   }

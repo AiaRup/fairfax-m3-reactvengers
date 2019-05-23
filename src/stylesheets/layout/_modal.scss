@@ -2,7 +2,7 @@
   width: 100vw;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -35,13 +35,16 @@
 .modal__content {
   width: 100%;
   text-align: center;
-  // padding: 0 40px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 0 20px;
 }
 
-.error__list-modal {
-  list-style-type: decimal;
+.modal__title{
+  margin-bottom: 10px;
 }
+
+
+

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Main = props => {
-  // Destructuring the props, to don't reuse props.title, props.btnText...
   const { btnText, iconsArr, description, title } = props;
   return (
     <main className="main__landing-page">

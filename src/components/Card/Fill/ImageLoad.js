@@ -35,7 +35,8 @@ ImageLoad.propTypes = {
   imageLoad: PropTypes.object.isRequired,
   clickLoadImage: PropTypes.func.isRequired,
   getImage: PropTypes.func.isRequired,
-  isDefaultImage: PropTypes.bool.isRequired
+  isDefaultImage: PropTypes.bool.isRequired,
+  classError: PropTypes.string.isRequired
 };
 
 export default ImageLoad;

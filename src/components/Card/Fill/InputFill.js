@@ -10,7 +10,7 @@ const InputFill = ({ labelFor, labelContent, inputId, inputType, inputName, inpu
   return (
     <div className={`fill__field-container ${classError}`}>
       <label htmlFor={labelFor} className="fill__label">
-        {labelContent}
+        {labelContent} {labelFor !== 'phone' ? '*':''}
       </label>
       <input id={inputId} className="fill__field" type={inputType} name={inputName} placeholder={inputPlaceholder} data-info={dataInfo} onChange={getValue} value={valueInput} />
     </div>

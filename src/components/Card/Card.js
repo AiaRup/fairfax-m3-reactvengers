@@ -27,7 +27,9 @@ Card.propTypes = {
   clickLoadImage: PropTypes.func.isRequired,
   getImage: PropTypes.func.isRequired,
   resetInfo: PropTypes.func.isRequired,
-  isDefaultImage: PropTypes.bool.isRequired
+  isDefaultImage: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired
 };
 
 export default Card;

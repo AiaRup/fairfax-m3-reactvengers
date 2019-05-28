@@ -71,6 +71,12 @@ Form.propTypes = {
   isDefaultImage: PropTypes.bool.isRequired,
   imageLoad: PropTypes.object.isRequired,
   clickLoadImage: PropTypes.func.isRequired,
-  getImage: PropTypes.func.isRequired
+  getImage: PropTypes.func.isRequired,
+  cardData: PropTypes.string.isRequired,
+  fetchNewResponse: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  inputErrorArr: PropTypes.arrayOf(PropTypes.string).isRequired
 };
+
 export default Form;

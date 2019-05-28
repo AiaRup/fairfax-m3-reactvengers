@@ -43,7 +43,8 @@ Fill.propTypes = {
   imageLoad: PropTypes.object.isRequired,
   clickLoadImage: PropTypes.func.isRequired,
   getImage: PropTypes.func.isRequired,
-  isDefaultImage: PropTypes.bool.isRequired
+  isDefaultImage: PropTypes.bool.isRequired,
+  inputErrorArr: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Fill;

@@ -1,6 +1,8 @@
 import React from 'react';
 import Twitter from './Twitter';
 import loadingGif from '../../../images/loading.gif';
+import PropTypes from 'prop-types';
+
 
 const Share = ({ isLoading, cardData, fetchNewResponse }) => {
   return (
@@ -19,5 +21,11 @@ const Share = ({ isLoading, cardData, fetchNewResponse }) => {
     </div>
   );
 };
+
+Share.propTypes = {
+  isLoading : PropTypes.bool.isRequired,
+  cardData : PropTypes.string.isRequired,
+  fetchNewResponse: PropTypes.func.isRequired
+}
 
 export default Share;

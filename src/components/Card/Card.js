@@ -7,13 +7,13 @@ import PropTypes from 'prop-types';
 import Modal from './Modal';
 
 const Card = props => {
-  const {isError, closeModal, inputErrorArr} = props;
+  const { isError, closeModal } = props;
   return (
     <div className="page-card">
       <Header />
       <Main {...props} />
       <Footer />
-      {isError && <Modal  closeModal={closeModal} inputErrorArr={inputErrorArr} />}
+      {isError && <Modal closeModal={closeModal} />}
     </div>
   );
 };

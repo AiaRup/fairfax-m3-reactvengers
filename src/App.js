@@ -28,7 +28,7 @@ class App extends Component {
       iconsStateArr: [{ id: 'email', isVisible: false }, { id: 'phone', isVisible: false }, { id: 'linkedin', isVisible: false }, { id: 'github', isVisible: false }],
       isLoading: false,
       inputErrorArr: [],
-      isError: false,
+      isError: false
     };
     this.updateUser = this.updateUser.bind(this);
     this.changeIconState = this.changeIconState.bind(this);
@@ -146,21 +146,18 @@ class App extends Component {
       const currentProp = this.state.userProfile[property];
       if (currentProp === '' && property !== 'phone' && property !== 'photo') {
         tempArr.push(property);
-        console.log(tempArr);
+      }
+      if (property === 'photo' && this.state.userProfile[property] === imageUrlBase) {
+        tempArr.push(property);
+      }
     }
-    if (property === 'photo' && this.state.userProfile[property] === imageUrlBase) {
-      tempArr.push(property);
-    }
-  }
     if (tempArr.length) {
-      this.setState({inputErrorArr : tempArr})
+      this.setState({ inputErrorArr: tempArr });
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
-
 
   saveData() {
     localStorage.setItem('userProfile', JSON.stringify(this.state.userProfile));
@@ -186,7 +183,6 @@ class App extends Component {
 
   closeModal() {
     this.setState({ isError: false });
-
   }
 
   render() {

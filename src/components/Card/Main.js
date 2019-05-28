@@ -25,7 +25,12 @@ Main.propTypes = {
   imageLoad: PropTypes.object.isRequired,
   clickLoadImage: PropTypes.func.isRequired,
   getImage: PropTypes.func.isRequired,
-  resetInfo: PropTypes.func.isRequired
+  resetInfo: PropTypes.func.isRequired,
+  cardData: PropTypes.string.isRequired,
+  fetchNewResponse: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  inputErrorArr: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Main;

@@ -26,7 +26,8 @@ InputFill.propTypes = {
   inputPlaceholder: PropTypes.string.isRequired,
   dataInfo: PropTypes.string,
   valueInput: PropTypes.string.isRequired,
-  updateUser: PropTypes.func.isRequired
+  updateUser: PropTypes.func.isRequired,
+  classError: PropTypes.string
 };
 
 export default InputFill;

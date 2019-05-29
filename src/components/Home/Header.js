@@ -8,7 +8,6 @@ class Header extends React.Component {
   }
 
   render () {
-    console.log('header render')
     return (
       <header className="page__header">
         <div className="wrapper">

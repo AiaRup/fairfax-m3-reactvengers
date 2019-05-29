@@ -9,7 +9,6 @@ class Footer extends React.Component {
   }
 
   render() {
-    console.log('footer render')
     const { teamName } = this.props;
     return (
       <footer className="page__footer">
